@@ -1,11 +1,11 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var Shoe = require('./brand');
+var Brand = require('./brand');
 var BrandSchema = new Schema({
   name: String,
   establishDate: String,
   location: [String],
 });
 
-var Shoe = mongoose.model('Shoe', ShoeSchema);
-module.exports = Shoe;
+var Brand = mongoose.model('Brand', BrandSchema);
+module.exports = Brand;

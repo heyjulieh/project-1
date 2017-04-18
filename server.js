@@ -7,6 +7,24 @@ var bodyParser = require('body-parser');
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+/**************
+ * MIDDLEWARE *
+ **************/
+ // custom middleware to console.log some helpful information
+ //   in terminal every time we get a request
+ function logRequestInfo(req, res, next){
+   console.log(`\nRECEIVED REQUEST : ${req.method} ${req.url}`);
+   console.log('query params:', req.query);
+   console.log('body:', req.body);
+   // request url parameters haven't been decided yet
+   //  so we'll have to log them inside any routes where
+   //  we want to use them
+   next();
+ }
+ app.use(logRequestInfo);
+
+
 /**********
  * ROUTES *
  **********/
@@ -54,5 +72,5 @@ app.put('/api/albums/:shoeId', updateShoeComment);
 
 
   app.listen(process.env.PORT || 5000, function () {
-    console.log('Book app listening at http://localhost:5000/');
+    console.log('Listening at http://localhost:5000/');
   });
