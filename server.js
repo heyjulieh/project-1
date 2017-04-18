@@ -34,37 +34,44 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
+
+app.get('/brand', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/brand.html');
+});
 /*
  * JSON API Endpoints
  */
 // index
 app.get('/api', showIndex);
   function showIndex(req,res){
-
+    console.log('this works.')
   }
 // show all shoes
 app.get('/api/shoes', showShoes);
   function showShoes(req,res) {
-
+    console.log('this works.')
   }
 // show specific shoe
 app.get('/api/shoes/:shoeId', showSpecificShoe);
   function showSpecificShoe(req,res) {
-
+    console.log('this works.')
   }
 
 app.post('/api/shoes', createShoe);
   function createShoe(req,res) {
+    console.log('this works.')
 
   }
 
 app.delete('/api/shoes/:shoeId', deleteShoeComment);
   function deleteShoeComment(req,res){
+    console.log('this works.')
 
   }
 
-app.put('/api/albums/:shoeId', updateShoeComment);
+app.put('/api/shoes/:shoeId', updateShoeComment);
   function updateShoeComment(req,res) {
+    console.log('this works.')
 
   }
 
