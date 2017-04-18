@@ -5,6 +5,7 @@ var BrandSchema = new Schema({
   name: String,
   establishDate: String,
   location: [String],
+  image: String
 });
 
 var Brand = mongoose.model('Brand', BrandSchema);
