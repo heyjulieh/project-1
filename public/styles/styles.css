@@ -1,5 +1,14 @@
+nav {
+  background-color: black;
+}
 .navbar {
   display: inline-block;
-  width: 500px;
   background-color: black;
+  float:left;
+  margin: auto;
+  padding-right: 10px;
+}
+
+.footer, .push {
+  height: 50px;
 }

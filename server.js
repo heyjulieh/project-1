@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-var controllers = require('./controllers');
 /**********
  * ROUTES *
  **********/
@@ -48,5 +47,12 @@ app.delete('/api/shoes/:shoeId', deleteShoeComment);
 
 app.put('/api/albums/:shoeId', updateShoeComment);
   function updateShoeComment(req,res) {
-    
+
   }
+
+
+
+
+  app.listen(process.env.PORT || 5000, function () {
+    console.log('Book app listening at http://localhost:5000/');
+  });
