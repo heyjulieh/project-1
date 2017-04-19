@@ -16,6 +16,7 @@ var ShoeSchema = new Schema({
   type: [ String ],
   dropLocation: [String],
   editor: String,
+  images: String
 });
 
 var Shoe = mongoose.model('Shoe', ShoeSchema);
