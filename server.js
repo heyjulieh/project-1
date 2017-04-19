@@ -39,6 +39,9 @@ app.get('/', function homepage (req, res) {
 app.get('/brand', function homepage (req, res) {
   res.sendFile(__dirname + '/views/brand.html');
 });
+app.get('/source', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/source.html');
+});
 /*
  * JSON API Endpoints
  */

@@ -227,7 +227,7 @@ function renderBrand(brand){
 }
 function renderShoe(shoe) {
   console.log('rendering shoe', shoe);
-  // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
+  shoe.brandHtml = shoe.brand.map(renderBrand).join("");
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
       <div class="col-md-10 col-md-offset-1">
