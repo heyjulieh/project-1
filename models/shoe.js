@@ -4,7 +4,11 @@ var Brand = require('./brand');
 
 var ShoeSchema = new Schema({
   // brandName: [Brand.Schema],
-  brandName: {type: Schema.Types.ObjectId, ref: 'Brand'},
+  // brand: {
+  // 	type: Schema.Types.ObjectId, 
+  // 	ref: 'Brand'
+  // },
+  brand: String,
   name: String,
   colorway: String,
   price: String,
