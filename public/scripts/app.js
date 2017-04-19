@@ -242,7 +242,7 @@ function renderShoes(shoe) {
           <!-- begin shoe internal row -->
             <div class='row'>
               <div class="col m3 s12 thumbnail shoe-art">
-                <img src="${shoe.image}" alt="shoe image">
+                <img src="${shoe.images}" alt="shoe image">
               </div>
               <div class="col m9 s12">
                 <ul class="list-group">
