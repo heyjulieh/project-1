@@ -8,6 +8,7 @@ $(document).ready(function() {
     url: '/api/shoes',
     success: renderMultipleShoes
   });
+});
 //   $('#album-form form').on('submit', function(e) {
 //     e.preventDefault();
 //     var formData = $(this).serialize();
@@ -218,35 +219,40 @@ $(document).ready(function() {
 //   $('div[data-album-id=' + deletedAlbumId + ']').remove();
 // }
 function renderMultipleShoes(shoes) {
-  shoes.forEach(function(shoes) {
-    renderShoes(shoes);
+  console.log (shoes);
+  shoes.forEach(function(shoe) {
+    renderShoes(shoe);
   });
 }
+
 function renderBrand(brand){
   // return `<span>&ndash; (${song.trackNumber}) ${song.name} &ndash;</span>`
 }
-function renderShoe(shoe) {
+
+function renderShoes(shoe) {
   console.log('rendering shoe', shoe);
-  shoe.brandHtml = shoe.brand.map(renderBrand).join("");
+    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
+
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col m10 offset-m1">
         <div class="panel panel-default">
           <div class="panel-body">
+
           <!-- begin shoe internal row -->
             <div class='row'>
-              <div class="col-md-3 col-xs-12 thumbnail shoe-art">
-                <img src="images/800x800.png" alt="shoe image">
+              <div class="col m3 s12 thumbnail shoe-art">
+                <img src="${shoe.image}" alt="shoe image">
               </div>
-              <div class="col-md-9 col-xs-12">
+              <div class="col m9 s12">
                 <ul class="list-group">
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
                     <span class='shoe-name'>${shoe.name}</span>
                   </li>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Name:</h4>
-                    <span class='shoe-name'>${shoe.brandName}</span>
+                    <h4 class='inline-header'>Brand Name:</h4>
+                    <span class='shoe-brand'>${shoe.brand}</span>
                   </li>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Colorway:</h4>
@@ -285,11 +291,6 @@ function renderShoe(shoe) {
         </div>
       </div>
     </div>
-    <!-- end one shoe -->
   `);
   $('#shoes').prepend(shoeHtml);
 }
-// when the add shoe button is clicked, display the modal
-// function handleAddShoeClick(e) {
-//   console.log('add-shoe clicked!');
-//   var currentShoeId = $(this).closest('.shoe').data('shoe-id');
