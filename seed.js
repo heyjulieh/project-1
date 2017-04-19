@@ -62,11 +62,11 @@ var brandList = [];
                 location: 'Herzogenaurach, Germany',
                 image: 'http://hoitalent.com/wp-content/uploads/2016/09/adidas.png'
                 });
-// db.Shoe.remove({}, function(err, shoes){
-//   db.Shoes.create(shoeList, function(err, albums){
-//     if (err) { return console.log('ERROR', err); }
-//     console.log("all shoes:", shoes);
-//     console.log("created", shoes.length, "shoes");
-//     process.exit();
-//   });
-// });
+db.Shoe.remove({}, function(err, shoes){
+  db.Shoe.create(shoeList, function(err, albums){
+    if (err) { return console.log('ERROR', err); }
+    console.log("all shoes:", shoes);
+    console.log("created", shoes.length, "shoes");
+    process.exit();
+  });
+});

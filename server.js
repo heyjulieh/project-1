@@ -4,6 +4,7 @@ var express = require('express');
 // generate a new express app and call it 'app'
 var app = express();
 var bodyParser = require('body-parser');
+var db = require('./models')
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,7 +51,6 @@ app.get('/api', showIndex);
 // show all shoes
 app.get('/api/shoes', function(req,res) {
     console.log('this works.')
-    res.send('this works.')
     // get all books
     db.Shoe.find({}, function(err, allShoes){
       res.json(allShoes);
