@@ -5,7 +5,7 @@ var db = require("./models");
 // simply run: `node seed.js` from the root of this project folder.
 var shoeList =[];
   shoeList.push({
-              brandName: 'Nike',
+              // brandName: 'Nike',
               name: 'Kobe AD',
               colorway: "Black/Black/White",
               price: '$160',
@@ -16,7 +16,7 @@ var shoeList =[];
               images: 'http://images.nike.com/is/image/DotCom/PDP_HERO/852425_001_A_PREM/kobe-ad-mens-basketball-shoe.jpg'
             });
   shoeList.push({
-              brandName: 'Nike',
+              // brandName: 'Nike',
               name: 'PG 1 Flip the Switch',
               colorway: 'Dark Grey/Purple-Violet Dust',
               price: '$110',
@@ -27,7 +27,7 @@ var shoeList =[];
               images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/nike-pg-1-flip-the-switch-1.jpg?x77385'
             });
   shoeList.push({
-              brandName: 'Nike',
+              // brandName: 'Nike',
               name: 'PNike Air Foamposite One Copper 2017',
               colorway: 'Black / Metallic Copper',
               price: '$230',
