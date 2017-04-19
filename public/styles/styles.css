@@ -33,3 +33,8 @@ h2 {
   overflow: scroll;
   font-family: helvetica, sans-serif;
 }
+
+.album-art {
+  height: 100px;
+  float: left;
+}
