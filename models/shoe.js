@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var Brand = require('./brand');
 
 var ShoeSchema = new Schema({
+  // brandName: [Brand.Schema],
   brandName: {type: Schema.Types.ObjectId, ref: 'Brand'},
   name: String,
   colorway: String,

@@ -5,7 +5,7 @@ var db = require("./models");
 // simply run: `node seed.js` from the root of this project folder.
 var shoeList =[];
   shoeList.push({
-              // brandName: 'Nike',
+              // brandName: '',
               name: 'Kobe AD',
               colorway: "Black/Black/White",
               price: '$160',
@@ -62,11 +62,52 @@ var brandList = [];
                 location: 'Herzogenaurach, Germany',
                 image: 'http://hoitalent.com/wp-content/uploads/2016/09/adidas.png'
                 });
+
+// remove Brands first
+db.Brand.remove({}, function(err, brands) {
+  console.log('removed all brands');
+  db.Brand.create(brandList, function(err, brands){
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log('recreated all brands');
+    console.log("created", brands.length, "brands");
+     });
+});
 db.Shoe.remove({}, function(err, shoes){
-  db.Shoe.create(shoeList, function(err, albums){
+  db.Shoe.create(shoeList, function(err, shoes){
     if (err) { return console.log('ERROR', err); }
     console.log("all shoes:", shoes);
     console.log("created", shoes.length, "shoes");
     process.exit();
   });
 });
+
+//     db.Shoe.remove({}, function(err, shoes){
+//       console.log('removed all shoes');
+//       shoeList.forEach(function (shoeData) {
+//         var shoe = new db.Shoe({
+//           title: bookData.title,
+//           image: bookData.image,
+//           releaseDate: bookData.releaseDate
+//         });
+//         db.Author.findOne({name: bookData.author}, function (err, foundAuthor) {
+//           console.log('found author ' + foundAuthor.name + ' for book ' + book.title);
+//           if (err) {
+//             console.log(err);
+//             return;
+//           }
+//           book.author = foundAuthor;
+//           book.save(function(err, savedBook){
+//             if (err) {
+//               return console.log(err);
+//             }
+//             console.log('saved ' + savedBook.title + ' by ' + foundAuthor.name);
+//           });
+//         });
+//       });
+//     });
+
+//   });
+// });

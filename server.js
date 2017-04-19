@@ -56,6 +56,15 @@ app.get('/api/shoes', function(req,res) {
       res.json(allShoes);
     });
 });
+
+// show all brands
+app.get('/api/brands', function(req,res) {
+    console.log('this works.')
+    // get all books
+    db.Brand.find({}, function(err, allBrands){
+      res.json(allBrands);
+    });
+});
 // get one book
 // app.get('/api/books/:id', function (req, res) {
 //   console.log('request url params:', req.params)
