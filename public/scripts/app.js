@@ -219,20 +219,16 @@ $(document).ready(function() {
 //   $('div[data-album-id=' + deletedAlbumId + ']').remove();
 // }
 function renderMultipleShoes(shoes) {
-  console.log (shoes);
-  shoes.forEach(function(shoe) {
-    renderShoes(shoe);
+  shoes.forEach(function(shoes) {
+    renderShoes(shoes);
   });
 }
-
 function renderBrand(brand){
   // return `<span>&ndash; (${song.trackNumber}) ${song.name} &ndash;</span>`
 }
-
-function renderShoes(shoe) {
+function renderShoe(shoe) {
   console.log('rendering shoe', shoe);
-    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
-
+  // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
       <div class="col m10 offset-m1">
@@ -251,8 +247,8 @@ function renderShoes(shoe) {
                     <span class='shoe-name'>${shoe.name}</span>
                   </li>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Brand Name:</h4>
-                    <span class='shoe-brand'>${shoe.brand}</span>
+                    <h4 class='inline-header'>Shoe Name:</h4>
+                    <span class='shoe-name'>${shoe.brandName}</span>
                   </li>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Colorway:</h4>
@@ -291,6 +287,11 @@ function renderShoes(shoe) {
         </div>
       </div>
     </div>
+    <!-- end one shoe -->
   `);
-  $('#shoes').prepend(shoeHtml);
+  $('#shoes').prepend(shoesHtml);
 }
+// when the add shoe button is clicked, display the modal
+// function handleAddShoeClick(e) {
+//   console.log('add-shoe clicked!');
+//   var currentShoeId = $(this).closest('.shoe').data('shoe-id');
