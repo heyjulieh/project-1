@@ -279,7 +279,7 @@ function renderShoe(shoe) {
             <div class='panel-footer'>
               <div class='panel-footer'>
                 <button class='btn btn-primary add-comment'>Add Comment</button>
-\              </div>
+              </div>
             </div>
           </div>
         </div>

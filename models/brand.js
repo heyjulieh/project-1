@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var Brand = require('./brand');
+
 var BrandSchema = new Schema({
   name: String,
   establishDate: String,
