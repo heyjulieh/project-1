@@ -53,10 +53,82 @@
       <div id = "top25">
          <h2>TOP 25</h2>
 
-     <!-- albums container! -->
-      <div id = "shoes">
-      </div>
-   </div>
+             <!-- shoes! -->
+             <div id='shoes'>
+
+
+
+
+                 <!-- one shoe -->
+                 <div class="row shoe">
+
+                   <div class="col sm12 m12 l12">
+                     <div class="panel panel-default">
+                       <div class="panel-body">
+
+
+                       <!-- begin shoe internal row -->
+                         <div class='row'>
+                           <div class="col sm3 m3 l3 thumbnail album-art">
+                             <img src="http://static.highsnobiety.com/wp-content/uploads/2015/12/03162839/best-sneaker-featured.jpg" alt="album image">
+                           </div>
+
+                           <div class="col sm3 m3 l3">
+                             <ul class="list-group">
+                               <li class="list-group-item">
+                                 <h4 class='inline-header'></h4>
+                                 <span class='shoe-name'>Ladyhawke</span>
+                               </li>
+
+                               <li class="list-group-item">
+                                 <h4 class='inline-header'>Artist Name:</h4>
+                                 <span class='artist-name'>Ladyhawke</span>
+                               </li>
+
+                               <li class="list-group-item">
+                                 <h4 class='inline-header'>Released date:</h4>
+                                 <span class='album-releaseDate'>2008, November 18</span>
+                               </li>
+                             </ul>
+                           </div>
+
+                         </div>
+                         <!-- end of album internal row -->
+
+                         <div class='panel-footer'>
+                         </div>
+
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 <!-- end one album -->
+
+
+
+
+             </div>
+           </section>
+
+           <!-- begin songModal: this is not visible until you call .modal() on it -->
+           <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
+             <div class="modal-dialog">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                   <h4 class="modal-title">Create Song</h4>
+                 </div>
+                 <div class="modal-body">
+
+                   <fieldset class='form-horizontal'>
+                     <!-- Text input-->
+                     <div class="form-group">
+                       <label class="col-md-4 control-label" for="songName">Song Name</label>
+                       <div class="col-md-4">
+                         <input id="songName" name="songName" type="text" placeholder="" class="form-control input-md" required="">
+                       </div>
+                     </div>
+
 
 
 
