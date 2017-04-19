@@ -45,28 +45,42 @@ app.get('/brand', function homepage (req, res) {
 app.get('/api', showIndex);
   function showIndex(req,res){
     console.log('this works.')
+    res.send('this works.')
   }
 // show all shoes
-app.get('/api/shoes', showShoes);
-  function showShoes(req,res) {
+app.get('/api/shoes', function(req,res) {
     console.log('this works.')
-  }
+    res.send('this works.')
+    // get all books
+    db.Shoe.find({}, function(err, allShoes){
+      res.json(allShoes);
+    });
+});
+// get one book
+// app.get('/api/books/:id', function (req, res) {
+//   console.log('request url params:', req.params)
+//   db.Book.findOne({_id: req.params.id }, function(err, data) {
+//     res.json(data);
+//   });
+// });
+
 // show specific shoe
 app.get('/api/shoes/:shoeId', showSpecificShoe);
   function showSpecificShoe(req,res) {
     console.log('this works.')
+    res.send('this works.')
   }
 
 app.post('/api/shoes', createShoe);
   function createShoe(req,res) {
     console.log('this works.')
-
+    res.send('this works.')
   }
 
 app.delete('/api/shoes/:shoeId', deleteShoeComment);
   function deleteShoeComment(req,res){
     console.log('this works.')
-
+    res.send('this works.')
   }
 
 app.put('/api/shoes/:shoeId', updateShoeComment);

@@ -278,12 +278,8 @@ function renderShoe(shoe) {
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
               <div class='panel-footer'>
-                <button class='btn btn-primary add-song'>Add Song</button>
-                <button class='btn btn-danger delete-shoe'>Delete Shoe</button>
-                <button class='btn btn-info edit-shoe'>Edit Shoe</button>
-                <button class='btn btn-success save-shoe hidden'>Save Changes</button>
-                <button class='btn btn-info edit-songs'>Edit Songs</button>
-              </div>
+                <button class='btn btn-primary add-comment'>Add Comment</button>
+\              </div>
             </div>
           </div>
         </div>

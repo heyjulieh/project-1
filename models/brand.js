@@ -4,7 +4,7 @@ var Brand = require('./brand');
 var BrandSchema = new Schema({
   name: String,
   establishDate: String,
-  location: [String],
+  location: String,
   image: String
 });
 
