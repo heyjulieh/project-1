@@ -29,12 +29,36 @@ h2 {
 }
 
 #shoes {
-  background-color: white;
   overflow: scroll;
   font-family: helvetica, sans-serif;
 }
 
-.album-art {
-  height: 100px;
+h4 {
+  font-family: helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.inline-header {
+  display: inline-block;
+  margin: auto;
+}
+
+.list-group {
+  float: right;
+  margin-left: 30px;
+  clear: both;
+  text-align: left;
+  ext-indent: -50px;
+  vertical-align: top;
+}
+
+.shoe-art {
   float: left;
+  margin: auto;
+  clear: both;
+}
+
+img {
+  height: 200px;
+  clear: both;
 }
