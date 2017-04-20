@@ -9,10 +9,17 @@ $(document).ready(function() {
     success: renderMultipleShoes
   });
 
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/brands',
+    success: renderMultipleBrands
+  });
+});
   // post on submit button in source html
-  $('#submitForm').on('submit', function(e) {
-    e.preventDefault();
-    console.log('workinig')
+  // $('#submitForm').on('submit', function(e) {
+  //   e.preventDefault();
+  //   console.log('workinig')
   //   var formData = $(this).serialize();
   //   console.log('formData', formData);
   //   $.post('/api/shoes', formData, function(album) {
@@ -21,7 +28,7 @@ $(document).ready(function() {
   //   });
   //   $(this).trigger("reset");
   // });
-});
+// });
 //   // catch and handle the click on an add song button
   // $('#shoes').on('click', '.add-shoe', handleAddSongClick);
 //   $('#albums').on('click', '.delete-album', handleDeleteAlbumClick);
@@ -34,7 +41,7 @@ $(document).ready(function() {
 //   $('#editSongsModalBody').on('click', 'button.btn-danger', handleDeleteSongClick);
 //   $('#editSongsModal').on('click', 'button#editSongsModalSubmit', handleUpdateSongsSave);
 // });
-// 
+//
 
 // function handleUpdateSongsSave(event) {
 //   // build all the songs objects up
@@ -223,6 +230,23 @@ $(document).ready(function() {
 //   console.log('removing the following album from the page:', deletedAlbumId);
 //   $('div[data-album-id=' + deletedAlbumId + ']').remove();
 // }
+
+function renderMultipleBrands(brands) {
+  console.log (brands);
+  brands.forEach(function(brand) {
+    renderBrands(brand);
+  });
+}
+
+function fetchAndReRenderBrandWithId(brandId) {
+  $.get('/api/brands/' + brandId, function(brandData) {
+    // remove the current instance of the album from the page
+    $('div[data-brand-id=' + brandId + ']').remove();
+    // re-render it with the new album data (including songs)
+    renderBrand(brandData);
+  });
+}
+
 function renderMultipleShoes(shoes) {
   console.log (shoes);
   shoes.forEach(function(shoe) {
@@ -239,13 +263,53 @@ function fetchAndReRenderShoeWithId(shoeId) {
   });
 }
 
-function renderBrand(brand){
-  // return `<span>&ndash; (${song.trackNumber}) ${song.name} &ndash;</span>`
+function renderBrands(brand){
+  console.log('rendering brand', brand);
+    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
+
+  var brandHtml = (`
+    <div class="row brand" data-brand-id="${brand._id}">
+      <div class="col s12 m12 l12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <!-- begin brand internal row -->
+            <div class='row'>
+              <div class="col s12 m6 l6 thumbnail brand-art">
+                <img class="brand-img" src="${brand.image}" alt="brand image">
+              </div>
+              <div class="col s12 m6 l6">
+                <ul id="brand" class="list-group">
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Brand Name:</h4>
+                    <span class='brand-name'>${brand.name}</span>
+                  </li><br>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Established:</h4>
+                    <span class='brand-establishDate'>${brand.establishDate}</span>
+                  </li><br>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Origin:</h4>
+                    <span class='brand-location'>${brand.location}</span>
+                  </li><br>
+                </ul>
+              </div>
+            </div>
+            <!-- end of brand internal row -->
+            <div class='panel-footer'>
+              <div class='panel-footer'>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+  $('#brands').prepend(brandHtml);
 }
 
+
 function renderShoes(shoe) {
-  console.log('rendering shoe', shoe);
-    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
 
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
@@ -262,31 +326,31 @@ function renderShoes(shoe) {
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
                     <span class='shoe-name'>${shoe.name}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Brand Name:</h4>
                     <span class='shoe-brand'>${shoe.brand}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Colorway:</h4>
                     <span class='shoe-colorway'>${shoe.colorway}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Price:</h4>
                     <span class='shoe-price'>${shoe.price}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Released Date:</h4>
                     <span class='shoe-releaseDate'>${shoe.releaseDate}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Type:</h4>
                     <span class='shoe-type'>${shoe.type}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Drop Location: </h4>
                     <span class='shoe-drop-location'>${shoe.dropLocation}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Pick Editor:</h4>
                     <span class='shoe-editor'>${shoe.editor}</span>
@@ -297,7 +361,7 @@ function renderShoes(shoe) {
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
               <div class='panel-footer'>
-                <button class='btn btn-primary add-comment'>Add a Review</button>
+
               </div>
             </div>
           </div>
@@ -309,41 +373,42 @@ function renderShoes(shoe) {
 }
 
 // when the add review button is clicked, display the modal
-function handleReviewClick(e) {
-  console.log('add-review clicked!');
-  var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
-  console.log('id',currentShoeId);
-  $('#reviewModal').data('shoe-id', currentShoeId);
-  $('#reviewModal').modal();  // display the modal!
-}
+
+// function handleReviewClick(e) {
+//   console.log('add-review clicked!');
+//   var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
+//   console.log('id',currentShoeId);
+//   $('#modal1').data('shoe-id', currentShoeId);
+//   $('#modal1').modal1();  // display the modal!
+// }
 
 // when the review modal submit button is clicked:
-function handleReviewSubmit(e) {
-  e.preventDefault();
-  var $modal = $('#reviewModal');
-  var $userNameField = $modal.find('#userName');
-  var $reviewField = $modal.find('#review');
-  // get data from modal fields
-  // note the server expects the keys to be 'name', 'trackNumber' so we use those.
-  var dataToPost = {
-    username: $userNameField.val(),
-    review: $reviewField.val()
-  };
-  var shoeId = $modal.data('shoeId');
-  console.log('retrieved userName:', userName, ' and review:', review, ' for shoe w/ id: ', shoeId);
-  // POST to SERVER
-  var reviewPostToServerUrl = '/api/shoes/'+ shoeId + '/source';
-  $.post(reviewPostToServerUrl, dataToPost, function(data) {
-    console.log('received data from post to /source:', data);
-    // clear form
-    $userNameField.val('');
-    $reviewField.val('');
-
-    // close modal
-    $modal.modal('hide');
-    // update the correct album to show the new song
-    fetchAndReRenderShoeWithId(shoeId);
-  }).error(function(err) {
-    console.log('post to /api/shoe/:shoeId/source resulted in error', err);
-  });
-}
+// function handleReviewSubmit(e) {
+//   e.preventDefault();
+//   var $modal = $('#reviewModal');
+//   var $userNameField = $modal.find('#userName');
+//   var $reviewField = $modal.find('#review');
+//   // get data from modal fields
+//   // note the server expects the keys to be 'name', 'trackNumber' so we use those.
+//   var dataToPost = {
+//     username: $userNameField.val(),
+//     review: $reviewField.val()
+//   };
+//   var shoeId = $modal.data('shoeId');
+//   console.log('retrieved userName:', userName, ' and review:', review, ' for shoe w/ id: ', shoeId);
+//   // POST to SERVER
+//   var reviewPostToServerUrl = '/api/shoes/'+ shoeId + '/source';
+//   $.post(reviewPostToServerUrl, dataToPost, function(data) {
+//     console.log('received data from post to /source:', data);
+//     // clear form
+//     $userNameField.val('');
+//     $reviewField.val('');
+//
+//     // close modal
+//     $modal.modal('hide');
+//     // update the correct album to show the new song
+//     fetchAndReRenderShoeWithId(shoeId);
+//   }).error(function(err) {
+//     console.log('post to /api/shoe/:shoeId/source resulted in error', err);
+//   });
+// }
