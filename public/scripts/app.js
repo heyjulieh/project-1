@@ -3,11 +3,16 @@ console.log('Sanity Check!');
 
 $(document).ready(function() {
   console.log('app.js loaded!');
-  $('.parallax').parallax();
   $.ajax({
     method: 'GET',
     url: '/api/shoes',
     success: renderMultipleShoes
+  });
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/brands',
+    success: renderMultipleBrands
   });
 });
 //   $('#album-form form').on('submit', function(e) {
@@ -219,6 +224,23 @@ $(document).ready(function() {
 //   console.log('removing the following album from the page:', deletedAlbumId);
 //   $('div[data-album-id=' + deletedAlbumId + ']').remove();
 // }
+
+function renderMultipleBrands(brands) {
+  console.log (brands);
+  brands.forEach(function(brand) {
+    renderBrands(brand);
+  });
+}
+
+function fetchAndReRenderBrandWithId(brandId) {
+  $.get('/api/brands/' + brandId, function(brandData) {
+    // remove the current instance of the album from the page
+    $('div[data-brand-id=' + brandId + ']').remove();
+    // re-render it with the new album data (including songs)
+    renderBrand(brandData);
+  });
+}
+
 function renderMultipleShoes(shoes) {
   console.log (shoes);
   shoes.forEach(function(shoe) {
@@ -235,9 +257,52 @@ function fetchAndReRenderShoeWithId(shoeId) {
   });
 }
 
-function renderBrand(brand){
-  // return `<span>&ndash; (${song.trackNumber}) ${song.name} &ndash;</span>`
+function renderBrands(brand){
+  console.log('rendering brand', brand);
+    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
+
+  var brandHtml = (`
+    <div class="row brand" data-brand-id="${brand._id}">
+      <div class="col s12 m12 l12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <!-- begin brand internal row -->
+            <div class='row'>
+              <div class="col s12 m6 l6 thumbnail shoe-art">
+                <img src="${brand.image}" alt="brand image">
+              </div>
+
+              <div class="col s12 m6 l6">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Brand Name:</h4>
+                    <span class='brand-name'>${brand.name}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Established:</h4>
+                    <span class='brand-establishDate'>${brand.establishDate}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Origin:</h4>
+                    <span class='brand-location'>${brand.location}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- end of brand internal row -->
+            <div class='panel-footer'>
+              <div class='panel-footer'>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+  $('#brands').prepend(brandHtml);
 }
+
 
 function renderShoes(shoe) {
   console.log('rendering shoe', shoe);
@@ -306,10 +371,10 @@ function renderShoes(shoe) {
 }
 
 // when the add review button is clicked, display the modal
-function handleReviewClick(e) {
-  console.log('add-review clicked!');
-  var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
-  console.log('id',currentShoeId);
-  $('#modal1').data('shoe-id', currentShoeId);
-  $('#modal1').modal1();  // display the modal!
-}
+// function handleReviewClick(e) {
+//   console.log('add-review clicked!');
+//   var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
+//   console.log('id',currentShoeId);
+//   $('#modal1').data('shoe-id', currentShoeId);
+//   $('#modal1').modal1();  // display the modal!
+// }

@@ -42,6 +42,12 @@ app.get('/brand', function homepage (req, res) {
 app.get('/source', function homepage (req, res) {
   res.sendFile(__dirname + '/views/source.html');
 });
+app.get('/about', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/about.html');
+});
+app.get('/contact', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/contact.html');
+});
 /*
  * JSON API Endpoints
  */
@@ -100,9 +106,6 @@ app.put('/api/shoes/:shoeId', updateShoeComment);
     console.log('this works.')
 
   }
-
-
-
 
   app.listen(process.env.PORT || 5000, function () {
     console.log('Listening at http://localhost:5000/');
