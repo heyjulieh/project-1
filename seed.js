@@ -33,7 +33,7 @@ var shoeList =[];
               colorway: "Black/Black/White",
               price: '$160',
               releaseDate: 'November 22, 2017',
-              type: ['Basketball', 'fitness'],
+              type: ['Basketball', 'Fitness'],
               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
               editor: 'Kevin Tse',
               images: 'http://images.nike.com/is/image/DotCom/PDP_HERO/852425_001_A_PREM/kobe-ad-mens-basketball-shoe.jpg'
@@ -44,7 +44,7 @@ var shoeList =[];
               colorway: 'Dark Grey/Purple-Violet Dust',
               price: '$110',
               releaseDate: 'May 5, 2017',
-              type: ['Basketball', 'fitness'],
+              type: ['Basketball', 'Fitness'],
               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
               editor: 'Kevin Tse',
               images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/nike-pg-1-flip-the-switch-1.jpg?x77385'
@@ -60,19 +60,17 @@ var shoeList =[];
               editor: 'Kevin Tse',
               images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/01/copper-nike-foamposite-one.jpg?x77385'
             });
-  shoeList.push({
-              brand: 'Under-Armour',
-              name: 'Curry 3Zer0 Team Royal',
-              colorway: 'Team Royal/Taxi',
-              price: '$120',
-              releaseDate: 'April 15, 2017',
-              type: ['Basketball', 'fitness'],
-              dropLocation: ['Los Angeles', 'San Francisco'],
-              editor: 'Kevin Tse',
-              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/Under-Armour-Curry-3ZER0.jpg?x77385'
-            });
-
-
+            shoeList.push({
+                        brand: 'Under-Armour',
+                        name: 'Curry 3Zer0 Team Royal',
+                        colorway: 'Team Royal/Taxi',
+                        price: '$120',
+                        releaseDate: 'April 15, 2017',
+                        type: ['Basketball', 'Fitness'],
+                        dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
+                        editor: 'Kevin Tse',
+                        images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/Under-Armour-Curry-3ZER0.jpg?x77385'
+                      });
 
 
 // remove Brands first

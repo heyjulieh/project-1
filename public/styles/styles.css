@@ -1,10 +1,17 @@
 h1{
-  font-family: helvetica, sans-serif;
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
+h3 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
 nav {
   background-color: black;
-  font-family: helvetica, sans-serif;
+  font-family: 'Electrolize', sans-serif;
+  padding-left: 10px;
 }
 
 .navbar {
@@ -25,16 +32,18 @@ main {
 }
 
 #top25 {
-  background-color: lightgrey;
-  height: 300px;
-  overflow: scroll;
+  margin-left: -100px;
 }
 
 h2 {
   font-size: 40px;
   text-align: left;
   padding-left: 15px;
-  font-family: helvetica, sans-serif;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.banner{
+  padding-bottom: 20px;
 }
 
 #shoes {
@@ -43,8 +52,15 @@ h2 {
 }
 
 h4 {
-  font-family: helvetica, sans-serif;
-  font-size: 14px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 15px;
+  padding-right: 5px;
+}
+
+span {
+  font-family: 'Rock Salt', sans-serif;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .inline-header {
@@ -69,6 +85,7 @@ h4 {
 img {
   height: 200px;
   clear: both;
+  margin-left: -150px;
 }
 
 .source {
@@ -77,13 +94,15 @@ img {
 
 .form-control {
   background-color: white;
-  color: grey;
+  color: darkgrey;
+  padding: 5px;
   font-size: 10px;
   width: 200px;
 }
 
 label {
   color: black;
+  font-family: 'Electrolize', sans-serif;
   text-align: right;
   font-size: 12px;
   vertical-align: bottom;
@@ -99,12 +118,14 @@ label {
 }
 
 legend {
-  margin: 20px;
-  font-size: 20px;
+  font-family: 'Permanent Marker', sans-serif;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 24px;
 }
 
 input {
-  color: grey;
+  color: black;
   width: 300px;
   height: 50px;
   text-align: left;
@@ -116,12 +137,17 @@ input {
 }
 
 #singlebutton {
+  font-family: 'Roboto Condensed', sans-serif;
   border-color: none;
   background-color: grey;
+  font-size: 12px;
+  width: 80px;
+  height: 45px;
+  padding:5px;
 }
 
 #brand {
   height: 150px;
-  padding: 10px
+  padding: 10px;
   margin: 10px;
 }
