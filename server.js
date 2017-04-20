@@ -39,6 +39,7 @@ app.get('/', function homepage (req, res) {
 app.get('/brand', function homepage (req, res) {
   res.sendFile(__dirname + '/views/brand.html');
 });
+
 app.get('/source', function homepage (req, res) {
   res.sendFile(__dirname + '/views/source.html');
 });
@@ -60,6 +61,7 @@ app.get('/api/shoes', function(req,res) {
     });
 });
 
+//
 app.get('/api/source', function(req,res) {
     console.log('this works.')
     res.json('this works');
@@ -88,6 +90,7 @@ app.get('/api/shoes/:shoeId', showSpecificShoe);
     res.send('this works.')
   }
 
+// post anc\d create a new shoe
 app.post('/api/source', createShoe);
   function createShoe(req, res) {
   db.Shoe.create(req.body, function(err, shoe) {
