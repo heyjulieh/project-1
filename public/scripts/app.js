@@ -9,24 +9,28 @@ $(document).ready(function() {
     success: renderMultipleShoes
   });
 
+
   $.ajax({
     method: 'GET',
     url: '/api/brands',
     success: renderMultipleBrands
   });
 });
-//   $('#album-form form').on('submit', function(e) {
-//     e.preventDefault();
-//     var formData = $(this).serialize();
-//     console.log('formData', formData);
-//     $.post('/api/albums', formData, function(album) {
-//       console.log('album after POST', album);
-//       renderAlbum(album);  //render the server's response
-//     });
-//     $(this).trigger("reset");
-//   });
+  // post on submit button in source html
+  // $('#submitForm').on('submit', function(e) {
+  //   e.preventDefault();
+  //   console.log('workinig')
+  //   var formData = $(this).serialize();
+  //   console.log('formData', formData);
+  //   $.post('/api/shoes', formData, function(album) {
+  //     console.log('shoe after POST', shoe);
+  //     renderAlbum(album);  //render the server's response
+  //   });
+  //   $(this).trigger("reset");
+  // });
+// });
 //   // catch and handle the click on an add song button
-//   $('#albums').on('click', '.add-song', handleAddSongClick);
+  // $('#shoes').on('click', '.add-shoe', handleAddSongClick);
 //   $('#albums').on('click', '.delete-album', handleDeleteAlbumClick);
 //   $('#albums').on('click', '.edit-album', handleAlbumEditClick);
 //   $('#albums').on('click', '.save-album', handleSaveChangesClick);
@@ -37,6 +41,8 @@ $(document).ready(function() {
 //   $('#editSongsModalBody').on('click', 'button.btn-danger', handleDeleteSongClick);
 //   $('#editSongsModal').on('click', 'button#editSongsModalSubmit', handleUpdateSongsSave);
 // });
+//
+
 // function handleUpdateSongsSave(event) {
 //   // build all the songs objects up
 //   var $modal = $('#editSongsModal');
@@ -304,8 +310,6 @@ function renderBrands(brand){
 
 
 function renderShoes(shoe) {
-  console.log('rendering shoe', shoe);
-    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
 
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
@@ -317,7 +321,6 @@ function renderShoes(shoe) {
               <div class="col s12 m6 l6 thumbnail shoe-art">
                 <img src="${shoe.images}" alt="shoe image">
               </div>
-
               <div class="col s12 m6 l6">
                 <ul class="list-group">
                   <li class="list-group-item">
@@ -370,10 +373,42 @@ function renderShoes(shoe) {
 }
 
 // when the add review button is clicked, display the modal
+
 // function handleReviewClick(e) {
 //   console.log('add-review clicked!');
 //   var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
 //   console.log('id',currentShoeId);
 //   $('#modal1').data('shoe-id', currentShoeId);
 //   $('#modal1').modal1();  // display the modal!
+// }
+
+// when the review modal submit button is clicked:
+// function handleReviewSubmit(e) {
+//   e.preventDefault();
+//   var $modal = $('#reviewModal');
+//   var $userNameField = $modal.find('#userName');
+//   var $reviewField = $modal.find('#review');
+//   // get data from modal fields
+//   // note the server expects the keys to be 'name', 'trackNumber' so we use those.
+//   var dataToPost = {
+//     username: $userNameField.val(),
+//     review: $reviewField.val()
+//   };
+//   var shoeId = $modal.data('shoeId');
+//   console.log('retrieved userName:', userName, ' and review:', review, ' for shoe w/ id: ', shoeId);
+//   // POST to SERVER
+//   var reviewPostToServerUrl = '/api/shoes/'+ shoeId + '/source';
+//   $.post(reviewPostToServerUrl, dataToPost, function(data) {
+//     console.log('received data from post to /source:', data);
+//     // clear form
+//     $userNameField.val('');
+//     $reviewField.val('');
+//
+//     // close modal
+//     $modal.modal('hide');
+//     // update the correct album to show the new song
+//     fetchAndReRenderShoeWithId(shoeId);
+//   }).error(function(err) {
+//     console.log('post to /api/shoe/:shoeId/source resulted in error', err);
+//   });
 // }

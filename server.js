@@ -39,6 +39,7 @@ app.get('/', function homepage (req, res) {
 app.get('/brand', function homepage (req, res) {
   res.sendFile(__dirname + '/views/brand.html');
 });
+
 app.get('/source', function homepage (req, res) {
   res.sendFile(__dirname + '/views/source.html');
 });
@@ -66,6 +67,12 @@ app.get('/api/shoes', function(req,res) {
     });
 });
 
+//
+app.get('/api/source', function(req,res) {
+    console.log('this works.')
+    res.json('this works');
+
+});
 // show all brands
 app.get('/api/brands', function(req,res) {
     console.log('this works.')
@@ -89,11 +96,15 @@ app.get('/api/shoes/:shoeId', showSpecificShoe);
     res.send('this works.')
   }
 
-app.post('/api/shoes', createShoe);
-  function createShoe(req,res) {
-    console.log('this works.')
-    res.send('this works.')
-  }
+// post anc\d create a new shoe
+app.post('/api/source', createShoe);
+  function createShoe(req, res) {
+  db.Shoe.create(req.body, function(err, shoe) {
+    if (err) { console.log('error', err); }
+    console.log(shoe);
+    res.json(shoe);
+  });
+}
 
 app.delete('/api/shoes/:shoeId', deleteShoeComment);
   function deleteShoeComment(req,res){

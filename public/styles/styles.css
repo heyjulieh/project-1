@@ -47,7 +47,6 @@ h2 {
 }
 
 #shoes {
-
   font-family: helvetica, sans-serif;
 }
 
@@ -94,6 +93,7 @@ span {
 img {
   height: 200px;
   clear: both;
+<<<<<<< HEAD
   margin-left: -150px;
 }
 
