@@ -15,6 +15,15 @@ nav {
   padding-right: 10px;
 }
 
+main {
+  overflow: scroll;
+  height: 500px;
+}
+
+.parallax-container {
+  height: "500px";
+}
+
 #top25 {
   background-color: lightgrey;
   height: 300px;
@@ -29,7 +38,7 @@ h2 {
 }
 
 #shoes {
-  overflow: scroll;
+
   font-family: helvetica, sans-serif;
 }
 
@@ -48,8 +57,14 @@ h4 {
   margin-left: 30px;
   clear: both;
   text-align: left;
-  ext-indent: -50px;
-  vertical-align: top;
+}
+
+.list-group {
+  float: right;
+  margin-left: 30px;
+  height: 400px;
+  clear: both;
+  text-align: left;
 }
 
 .shoe-art {
