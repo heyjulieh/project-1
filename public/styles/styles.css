@@ -134,6 +134,7 @@ input {
 .brand-img {
   height: 120px;
   clear: both;
+  margin-left: -120px;
 }
 
 #singlebutton {
@@ -149,5 +150,5 @@ input {
 #brand {
   height: 150px;
   padding: 10px;
-  margin: 10px;
+  margin-left: 10px;
 }
