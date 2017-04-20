@@ -38,6 +38,19 @@ var shoeList =[];
               editor: 'Kevin Tse',
               images: 'http://images.nike.com/is/image/DotCom/PDP_HERO/852425_001_A_PREM/kobe-ad-mens-basketball-shoe.jpg'
             });
+            var shoeList =[];
+              shoeList.push
+                          ({
+                          brand: 'Nike',
+                          name: 'Kobe AD',
+                          colorway: "Black/Black/White",
+                          price: '$160',
+                          releaseDate: 'November 22, 2017',
+                          type: ['Basketball', 'Fitness'],
+                          dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
+                          editor: 'Julie Huang',
+                          images: 'http://images.nike.com/is/image/DotCom/PDP_HERO/852425_001_A_PREM/kobe-ad-mens-basketball-shoe.jpg'
+                        });
   shoeList.push({
               brand: 'Nike',
               name: 'PG 1 Flip the Switch',

@@ -22,6 +22,3 @@ var ShoeSchema = new Schema({
 
 var Shoe = mongoose.model('Shoe', ShoeSchema);
 module.exports = Shoe;
-
-var UserShoe = mongoose.model('userShoe', ShoeSchema);
-module.exports = UserShoe;

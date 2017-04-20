@@ -3,6 +3,9 @@ console.log('Sanity Check!');
 
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+
+
   $.ajax({
     method: 'GET',
     url: '/api/shoes',
@@ -17,6 +20,7 @@ $(document).ready(function() {
   });
 });
 
+var editorList =[];
 
 function renderMultipleBrands(brands) {
   console.log (brands);
@@ -37,7 +41,9 @@ function fetchAndReRenderBrandWithId(brandId) {
 function renderMultipleShoes(shoes) {
   console.log (shoes);
   shoes.forEach(function(shoe) {
+    if (shoe.editor === 'Kevin Tse' || shoe.editor === 'Julie Huang'){
     renderShoes(shoe);
+    }
   });
 }
 
@@ -97,6 +103,7 @@ function renderBrands(brand){
 
 
 function renderShoes(shoe) {
+
 
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">

@@ -100,21 +100,23 @@ app.get('/api/shoes/:shoeId', showSpecificShoe);
 // post and create a new shoe on source page
 app.post('/api/source', createShoe);
   function createShoe(req, res) {
-  db.userShoe.create(req.body, function(err, shoe) {
+  db.Shoe.create(req.body, function(err, shoe) {
     if (err) { console.log('error', err); }
     console.log(shoe);
     res.json(shoe);
   });
 }
 
-app.delete('/api/shoes/:shoeId', deleteShoeComment);
-  function deleteShoeComment(req,res){
-    console.log('this works.')
-    res.send('this works.')
+app.delete('/api/source/:shoeId', deleteShoe);
+  function deleteShoe(req,res){
+    db.UserShoe.findOneAndRemove({ _id: req.params.shoeId }, function(err, foundShoe){
+    // note you could send just send 204, but we're sending 200 and the deleted entity
+    res.json(foundShoe);
+  });
   }
 
-app.put('/api/shoes/:shoeId', updateShoeComment);
-  function updateShoeComment(req,res) {
+app.put('/api/source/:shoeId', updateShoe);
+  function updateShoe(req,res) {
     console.log('this works.')
 
   }

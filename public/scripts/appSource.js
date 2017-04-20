@@ -3,11 +3,29 @@ console.log('Sanity Check!');
 
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+  $("#rating").keydown(function (e) {
+         // Allow: backspace, delete, tab, escape, enter and .
+         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+              // Allow: Ctrl+A, Command+A
+             (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+              // Allow: home, end, left, right, down, up
+             (e.keyCode >= 35 && e.keyCode <= 40)) {
+                  // let it happen, don't do anything
+                  return;
+         }
+         // Ensure that it is a number and stop the keypress
+         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+             e.preventDefault();
+         }
+     });
+
   $.ajax({
     method: 'GET',
     url: '/api/source',
     success: renderMultipleShoes
   });
+
 
   // post on submit button in source html
   $('#submitForm').on('submit', function(e) {
@@ -17,7 +35,7 @@ $(document).ready(function() {
     console.log('formData', formData);
     $.post('/api/source', formData, function(shoe) {
       console.log('shoe after POST', shoe);
-      renderReviews(shoe);  //render the server's response
+      renderShoes(shoe);  //render the server's response
     });
     $(this).trigger("reset");
   });
@@ -238,10 +256,26 @@ $(document).ready(function() {
 //   $('div[data-album-id=' + deletedAlbumId + ']').remove();
 // }
 
+function renderMultipleBrands(brands) {
+  console.log (brands);
+  brands.forEach(function(brand) {
+    renderBrands(brand);
+  });
+}
+
+function fetchAndReRenderBrandWithId(brandId) {
+  $.get('/api/brands/' + brandId, function(brandData) {
+    // remove the current instance of the album from the page
+    $('div[data-brand-id=' + brandId + ']').remove();
+    // re-render it with the new album data (including songs)
+    renderBrand(brandData);
+  });
+}
+
 function renderMultipleShoes(shoes) {
   console.log (shoes);
   shoes.forEach(function(shoe) {
-    renderReviews(shoe);
+    renderShoes(shoe);
   });
 }
 
@@ -254,7 +288,53 @@ function fetchAndReRenderShoeWithId(shoeId) {
   });
 }
 
-function renderReviews(shoe) {
+function renderBrands(brand){
+  console.log('rendering brand', brand);
+    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
+
+  var brandHtml = (`
+    <div class="row brand" data-brand-id="${brand._id}">
+      <div class="col s12 m12 l12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <!-- begin brand internal row -->
+            <div class='row'>
+              <div class="col s12 m6 l6 thumbnail brand-art">
+                <img class="brand-img" src="${brand.image}" alt="brand image">
+              </div>
+              <div class="col s12 m6 l6">
+                <ul id="brand" class="list-group">
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Brand Name:</h4>
+                    <span class='brand-name'>${brand.name}</span>
+                  </li><br>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Established:</h4>
+                    <span class='brand-establishDate'>${brand.establishDate}</span>
+                  </li><br>
+                  <li class="list-group-item">
+                    <h4 class='inline-header'>Origin:</h4>
+                    <span class='brand-location'>${brand.location}</span>
+                  </li><br>
+                </ul>
+              </div>
+            </div>
+            <!-- end of brand internal row -->
+            <div class='panel-footer'>
+              <div class='panel-footer'>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+  $('#brands').prepend(brandHtml);
+}
+
+
+function renderShoes(shoe) {
 
   var sourceHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
