@@ -66,20 +66,29 @@ span {
 .inline-header {
   display: inline-block;
   margin: auto;
-}
-
-.list-group {
-  float: right;
-  margin-left: 30px;
-  height: 400px;
+  float: left;
   clear: both;
   text-align: left;
 }
 
+.list-group {
+  margin-left: 30px;
+  height: 400px;
+  text-align: left;
+}
+
+.list-group-item{
+  float: left;
+}
 .shoe-art {
   float: left;
   margin: auto;
   clear: both;
+}
+
+.brand-art {
+  float: left;
+  margin: auto;
 }
 
 img {

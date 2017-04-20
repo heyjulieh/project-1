@@ -20,7 +20,7 @@ var brandList = [];
                 });
   brandList.push({
                 name: 'Under-Armour',
-                establishDate: '1996',
+                establishDate: 'December 7, 1996',
                 location: 'Washington D.C.',
                 image: 'https://lh4.googleusercontent.com/-S0MX0flnwLI/AAAAAAAAAAI/AAAAAAAAAsk/pyavDK7bTCI/s0-c-k-no-ns/photo.jpg'
                 });
@@ -60,17 +60,17 @@ var shoeList =[];
               editor: 'Kevin Tse',
               images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/01/copper-nike-foamposite-one.jpg?x77385'
             });
-            shoeList.push({
-                        brand: 'Under-Armour',
-                        name: 'Curry 3Zer0 Team Royal',
-                        colorway: 'Team Royal/Taxi',
-                        price: '$120',
-                        releaseDate: 'April 15, 2017',
-                        type: ['Basketball', 'Fitness'],
-                        dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
-                        editor: 'Kevin Tse',
-                        images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/Under-Armour-Curry-3ZER0.jpg?x77385'
-                      });
+  shoeList.push({
+              brand: 'Under-Armour',
+              name: 'Curry 3Zer0 Team Royal',
+              colorway: 'Team Royal/Taxi',
+              price: '$120',
+              releaseDate: 'April 15, 2017',
+              type: ['Basketball', 'Fitness'],
+              dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
+              editor: 'Kevin Tse',
+              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/Under-Armour-Curry-3ZER0.jpg?x77385'
+              });
 
 
 // remove Brands first

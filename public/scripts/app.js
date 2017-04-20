@@ -268,24 +268,23 @@ function renderBrands(brand){
           <div class="panel-body">
           <!-- begin brand internal row -->
             <div class='row'>
-              <div class="col s12 m6 l6 thumbnail shoe-art">
+              <div class="col s12 m6 l6 thumbnail brand-art">
                 <img class="brand-img" src="${brand.image}" alt="brand image">
               </div>
-
               <div class="col s12 m6 l6">
                 <ul id="brand" class="list-group">
                   <li class="list-group-item">
                     <h4 class='inline-header'>Brand Name:</h4>
                     <span class='brand-name'>${brand.name}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Established:</h4>
                     <span class='brand-establishDate'>${brand.establishDate}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Origin:</h4>
                     <span class='brand-location'>${brand.location}</span>
-                  </li>
+                  </li><br>
                 </ul>
               </div>
             </div>
@@ -324,31 +323,31 @@ function renderShoes(shoe) {
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
                     <span class='shoe-name'>${shoe.name}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Brand Name:</h4>
                     <span class='shoe-brand'>${shoe.brand}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Colorway:</h4>
                     <span class='shoe-colorway'>${shoe.colorway}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Price:</h4>
                     <span class='shoe-price'>${shoe.price}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Released Date:</h4>
                     <span class='shoe-releaseDate'>${shoe.releaseDate}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Type:</h4>
                     <span class='shoe-type'>${shoe.type}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Drop Location: </h4>
                     <span class='shoe-drop-location'>${shoe.dropLocation}</span>
-                  </li>
+                  </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Pick Editor:</h4>
                     <span class='shoe-editor'>${shoe.editor}</span>
