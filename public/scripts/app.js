@@ -225,6 +225,15 @@ function renderMultipleShoes(shoes) {
   });
 }
 
+function fetchAndReRenderShoeWithId(shoeId) {
+  $.get('/api/shoes/' + shoeId, function(data) {
+    // remove the current instance of the album from the page
+    $('div[data-shoe-id=' + shoeId + ']').remove();
+    // re-render it with the new album data (including songs)
+    renderShoe(data);
+  });
+}
+
 function renderBrand(brand){
   // return `<span>&ndash; (${song.trackNumber}) ${song.name} &ndash;</span>`
 }
@@ -235,55 +244,44 @@ function renderShoes(shoe) {
 
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
-      <div class="col m10 offset-m1">
+      <div class="col s12 m12 l12">
         <div class="panel panel-default">
           <div class="panel-body">
-
           <!-- begin shoe internal row -->
             <div class='row'>
-              <div class="col m3 s12 thumbnail shoe-art">
+              <div class="col s12 m6 l6 thumbnail shoe-art">
                 <img src="${shoe.images}" alt="shoe image">
               </div>
-
-              <div class="col m9 s12">
-                
+              <div class="col s12 m6 l6">
                 <ul class="list-group">
-                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
                     <span class='shoe-name'>${shoe.name}</span>
                   </li>
-                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Brand Name:</h4>
                     <span class='shoe-brand'>${shoe.brand}</span>
                   </li>
-                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Colorway:</h4>
                     <span class='shoe-colorway'>${shoe.colorway}</span>
                   </li>
-                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Price:</h4>
                     <span class='shoe-price'>${shoe.price}</span>
                   </li>
-                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Released Date:</h4>
                     <span class='shoe-releaseDate'>${shoe.releaseDate}</span>
                   </li>
-                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Type:</h4>
                     <span class='shoe-type'>${shoe.type}</span>
                   </li>
-                  
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Drop Location</h4>
+                    <h4 class='inline-header'>Drop Location: </h4>
                     <span class='shoe-drop-location'>${shoe.dropLocation}</span>
                   </li>
-                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Pick Editor:</h4>
                     <span class='shoe-editor'>${shoe.editor}</span>
@@ -294,7 +292,7 @@ function renderShoes(shoe) {
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
               <div class='panel-footer'>
-                <button class='btn btn-primary add-comment'>Add Comment</button>
+                <button class='btn btn-primary add-comment'>Add a Review</button>
               </div>
             </div>
           </div>
@@ -303,4 +301,44 @@ function renderShoes(shoe) {
     </div>
   `);
   $('#shoes').prepend(shoeHtml);
+}
+
+// when the add review button is clicked, display the modal
+function handleReviewClick(e) {
+  console.log('add-review clicked!');
+  var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
+  console.log('id',currentShoeId);
+  $('#reviewModal').data('shoe-id', currentShoeId);
+  $('#reviewModal').modal();  // display the modal!
+}
+
+// when the review modal submit button is clicked:
+function handleReviewSubmit(e) {
+  e.preventDefault();
+  var $modal = $('#reviewModal');
+  var $userNameField = $modal.find('#userName');
+  var $reviewField = $modal.find('#review');
+  // get data from modal fields
+  // note the server expects the keys to be 'name', 'trackNumber' so we use those.
+  var dataToPost = {
+    username: $userNameField.val(),
+    review: $reviewField.val()
+  };
+  var shoeId = $modal.data('shoeId');
+  console.log('retrieved userName:', userName, ' and review:', review, ' for shoe w/ id: ', shoeId);
+  // POST to SERVER
+  var reviewPostToServerUrl = '/api/shoes/'+ shoeId + '/source';
+  $.post(reviewPostToServerUrl, dataToPost, function(data) {
+    console.log('received data from post to /source:', data);
+    // clear form
+    $userNameField.val('');
+    $reviewField.val('');
+
+    // close modal
+    $modal.modal('hide');
+    // update the correct album to show the new song
+    fetchAndReRenderShoeWithId(shoeId);
+  }).error(function(err) {
+    console.log('post to /api/shoe/:shoeId/source resulted in error', err);
+  });
 }
