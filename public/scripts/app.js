@@ -15,8 +15,21 @@ $(document).ready(function() {
     url: '/api/brands',
     success: renderMultipleBrands
   });
-});
+
   // post on submit button in source html
+  $('#submitForm').on('submit', function(e) {
+    e.preventDefault();
+    console.log('workinig')
+    var formData = $(this).serialize();
+    console.log('formData', formData);
+    $.post('/api/shoes', formData, function(shoe) {
+      console.log('shoe after POST', shoe);
+      renderShoes(shoe);  //render the server's response
+    });
+    $(this).trigger("reset");
+  });
+});
+
   // $('#submitForm').on('submit', function(e) {
   //   e.preventDefault();
   //   console.log('workinig')
@@ -29,6 +42,7 @@ $(document).ready(function() {
   //   $(this).trigger("reset");
   // });
 // });
+
 //   // catch and handle the click on an add song button
   // $('#shoes').on('click', '.add-shoe', handleAddSongClick);
 //   $('#albums').on('click', '.delete-album', handleDeleteAlbumClick);
