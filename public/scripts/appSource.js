@@ -321,6 +321,8 @@ function renderBrands(brand){
             </div>
             <!-- end of brand internal row -->
             <div class='panel-footer'>
+            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Edit</button>
+            <button id="singlebutton" name="singlebutton" class="btn btn-danger">Delete</button>
               <div class='panel-footer'>
 
               </div>
@@ -365,12 +367,8 @@ function renderShoes(shoe) {
                     <span id="releaseDate" class='shoe-releaseDate'>${shoe.releaseDate}</span>
                   </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Type:</h4>
-                    <span id="type" class='shoe-type'>${shoe.type}</span>
-                  </li><br>
-                  <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Rating:</h4>
-                    <span id="type" class='shoe-rating'>${shoe.rating}</span>
+                    <span id="rating" class='shoe-rating'>${shoe.rating}</span>
                   </li><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>UserName: </h4>
@@ -381,6 +379,8 @@ function renderShoes(shoe) {
             </div>
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
+            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Edit</button>
+            <button id="singlebutton" name="singlebutton" class="btn btn-danger">Delete</button>
               <div class='panel-footer'>
 
               </div>
