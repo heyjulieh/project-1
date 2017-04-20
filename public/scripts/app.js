@@ -8,19 +8,21 @@ $(document).ready(function() {
     url: '/api/shoes',
     success: renderMultipleShoes
   });
+
+  // post on submit button in source html
+  $('#form-control').on('submit', function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    console.log('formData', formData);
+    $.post('/api/shoes', formData, function(album) {
+      console.log('shoe after POST', shoe);
+      renderAlbum(album);  //render the server's response
+    });
+    $(this).trigger("reset");
+  });
 });
-//   $('#album-form form').on('submit', function(e) {
-//     e.preventDefault();
-//     var formData = $(this).serialize();
-//     console.log('formData', formData);
-//     $.post('/api/albums', formData, function(album) {
-//       console.log('album after POST', album);
-//       renderAlbum(album);  //render the server's response
-//     });
-//     $(this).trigger("reset");
-//   });
 //   // catch and handle the click on an add song button
-//   $('#albums').on('click', '.add-song', handleAddSongClick);
+  // $('#shoes').on('click', '.add-shoe', handleAddSongClick);
 //   $('#albums').on('click', '.delete-album', handleDeleteAlbumClick);
 //   $('#albums').on('click', '.edit-album', handleAlbumEditClick);
 //   $('#albums').on('click', '.save-album', handleSaveChangesClick);
@@ -31,6 +33,8 @@ $(document).ready(function() {
 //   $('#editSongsModalBody').on('click', 'button.btn-danger', handleDeleteSongClick);
 //   $('#editSongsModal').on('click', 'button#editSongsModalSubmit', handleUpdateSongsSave);
 // });
+// 
+
 // function handleUpdateSongsSave(event) {
 //   // build all the songs objects up
 //   var $modal = $('#editSongsModal');
