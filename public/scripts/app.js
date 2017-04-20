@@ -13,14 +13,14 @@ $(document).ready(function() {
   $('#submitForm').on('submit', function(e) {
     e.preventDefault();
     console.log('workinig')
-  //   var formData = $(this).serialize();
-  //   console.log('formData', formData);
-  //   $.post('/api/shoes', formData, function(album) {
-  //     console.log('shoe after POST', shoe);
-  //     renderAlbum(album);  //render the server's response
-  //   });
-  //   $(this).trigger("reset");
-  // });
+    var formData = $(this).serialize();
+    console.log('formData', formData);
+    $.post('/api/shoes', formData, function(shoe) {
+      console.log('shoe after POST', shoe);
+      renderShoes(shoe);  //render the server's response
+    });
+    $(this).trigger("reset");
+  });
 });
 //   // catch and handle the click on an add song button
   // $('#shoes').on('click', '.add-shoe', handleAddSongClick);

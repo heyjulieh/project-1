@@ -91,7 +91,7 @@ app.get('/api/shoes/:shoeId', showSpecificShoe);
   }
 
 // post anc\d create a new shoe
-app.post('/api/source', createShoe);
+app.post('/api/shoes', createShoe);
   function createShoe(req, res) {
   db.Shoe.create(req.body, function(err, shoe) {
     if (err) { console.log('error', err); }
