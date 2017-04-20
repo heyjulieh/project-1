@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 <link rel="stylesheet" href="styles/styles.css">
 
+<!-- FONTS -->
+<style>
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Electrolize|Fredoka+One|Graduate|Permanent+Marker|Roboto+Condensed|Rock+Salt|Rubik+Mono+One|Shrikhand|Titillium+Web');
+</style>
+
 <!-- VENDOR SCRIPTS -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
@@ -24,7 +29,7 @@
       <div class="banner">
       <div class="container">
         <h1>sneakerHUB</h1>
-        <p>Julie and Kevin's hot kick picks!</p>
+        <h3>a crowdsourced sneaker collection</h3>
       </div>
     </div>
     </header>
@@ -33,16 +38,16 @@
       <div class = "navbar">
         <ul>
           <li>
-            <a href ="#">about</a>
+            <a href ="http://localhost:5000/about">about</a>
           </li>
           <li>
-            <a href ="#">contact</a>
+            <a href ="http://localhost:5000/contact">contact</a>
           </li>
           <li>
-            <a href ="#">source</a>
+            <a href ="http://localhost:5000/source">source</a>
           </li>
           <li>
-            <a href ="#">brand</a>
+            <a href ="http://localhost:5000/brand">brand</a>
           </li>
         </ul>
       </div>
@@ -50,11 +55,9 @@
     </nav>
 
     <main>
-
-             <!-- shoes! -->
     <section class="container">
       <div class="row">
-        <div class="col s12 m12 l12">
+        <div id="top25" class="col s12 m12 l12">
           <h2>TOP 25</h2>
         </div>
       </div>
@@ -63,65 +66,6 @@
       <div id='shoes'></div>
 
     </section>
-
-                     <!-- begin songModal: this is not visible until you call .modal() on it -->
-                         <div class="modal fade" tabindex="-1" role="dialog" id="reviewModal">
-                           <div class="modal-dialog">
-                             <div class="modal-content">
-                               <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                 <h4 class="modal-title">Create Review</h4>
-                               </div>
-                               <div class="modal-body">
-
-                                 <fieldset class='form-horizontal'>
-                                   <!-- Text input-->
-                                   <div class="form-group">
-                                     <label class="col m4 control-label" for="userName">User Name</label>
-                                     <div class="col m4">
-                                       <input id="userName" name="userName" type="text" placeholder="" class="form-control input-md" required="">
-                                     </div>
-                                   </div>
-
-                                   <!-- Number input-->
-                                   <div class="form-group">
-                                     <label class="col m4 control-label" for="review">Your Review</label>
-                                     <div class="col m4">
-                                       <input id="review" name="review" type="text" placeholder="" class="form-control input-md">
-                                     </div>
-                                   </div>
-                                 </fieldset>
-
-                               </div>
-                               <div class="modal-footer">
-                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                 <button type="button" class="btn btn-primary" id="saveReview">Save changes</button>
-                               </div>
-                             </div><!-- /.modal-content -->
-                           </div><!-- /.modal-dialog -->
-                         </div><!-- /.modal -->
-
-
-                         <!-- Edit Review Modal -->
-                         <div class="modal fade bs-modal-lg" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="editReviewModalTitle">
-                           <div class="modal-dialog" role="document">
-                             <div class="modal-content">
-                               <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                 <h4 class="modal-title" id="editReviewModalTitle">Edit Review</h4>
-                               </div>
-                               <div class="modal-body" id='editReviewModalBody'>
-                                 <p> REPLACE #editSongsModalBody </p>
-                               </div>
-                               <div class="modal-footer">
-                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                 <button type="button" class="btn btn-primary" id='editReviewModalSubmit'>Save changes</button>
-                               </div>
-                             </div><!-- /.modal-content -->
-                           </div><!-- /.modal-dialog -->
-                         </div><!-- /.modal -->
-
-
 
     </main>
     <footer class = "footer">
