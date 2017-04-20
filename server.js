@@ -58,21 +58,22 @@ app.get('/api', showIndex);
     console.log('this works.')
     res.send('this works.')
   }
-// show all shoes
+// show all shoes on api/shoes
 app.get('/api/shoes', function(req,res) {
     console.log('this works.')
-    // get all books
     db.Shoe.find({}, function(err, allShoes){
       res.json(allShoes);
     });
 });
 
-//
+// show all shoes on api/source
 app.get('/api/source', function(req,res) {
     console.log('this works.')
-    res.json('this works');
-
+    db.Shoe.find({}, function(err, allShoes){
+      res.json(allShoes);
+  });
 });
+
 // show all brands
 app.get('/api/brands', function(req,res) {
     console.log('this works.')
@@ -96,10 +97,10 @@ app.get('/api/shoes/:shoeId', showSpecificShoe);
     res.send('this works.')
   }
 
-// post anc\d create a new shoe
-app.post('/api/shoes', createShoe);
+// post and create a new shoe on source page
+app.post('/api/source', createShoe);
   function createShoe(req, res) {
-  db.Shoe.create(req.body, function(err, shoe) {
+  db.userShoe.create(req.body, function(err, shoe) {
     if (err) { console.log('error', err); }
     console.log(shoe);
     res.json(shoe);

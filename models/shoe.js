@@ -5,7 +5,7 @@ var Brand = require('./brand');
 var ShoeSchema = new Schema({
   // brandName: [Brand.Schema],
   // brand: {
-  // 	type: Schema.Types.ObjectId, 
+  // 	type: Schema.Types.ObjectId,
   // 	ref: 'Brand'
   // },
   brand: String,
@@ -16,8 +16,12 @@ var ShoeSchema = new Schema({
   type: [ String ],
   dropLocation: [String],
   editor: String,
-  images: String
+  images: String,
+  rating: Number
 });
 
 var Shoe = mongoose.model('Shoe', ShoeSchema);
 module.exports = Shoe;
+
+var UserShoe = mongoose.model('userShoe', ShoeSchema);
+module.exports = UserShoe;
