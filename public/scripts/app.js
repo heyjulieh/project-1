@@ -8,19 +8,22 @@ $(document).ready(function() {
     url: '/api/shoes',
     success: renderMultipleShoes
   });
+
+  // post on submit button in source html
+  $('#submitForm').on('submit', function(e) {
+    e.preventDefault();
+    console.log('workinig')
+  //   var formData = $(this).serialize();
+  //   console.log('formData', formData);
+  //   $.post('/api/shoes', formData, function(album) {
+  //     console.log('shoe after POST', shoe);
+  //     renderAlbum(album);  //render the server's response
+  //   });
+  //   $(this).trigger("reset");
+  // });
 });
-//   $('#album-form form').on('submit', function(e) {
-//     e.preventDefault();
-//     var formData = $(this).serialize();
-//     console.log('formData', formData);
-//     $.post('/api/albums', formData, function(album) {
-//       console.log('album after POST', album);
-//       renderAlbum(album);  //render the server's response
-//     });
-//     $(this).trigger("reset");
-//   });
 //   // catch and handle the click on an add song button
-//   $('#albums').on('click', '.add-song', handleAddSongClick);
+  // $('#shoes').on('click', '.add-shoe', handleAddSongClick);
 //   $('#albums').on('click', '.delete-album', handleDeleteAlbumClick);
 //   $('#albums').on('click', '.edit-album', handleAlbumEditClick);
 //   $('#albums').on('click', '.save-album', handleSaveChangesClick);
@@ -31,6 +34,8 @@ $(document).ready(function() {
 //   $('#editSongsModalBody').on('click', 'button.btn-danger', handleDeleteSongClick);
 //   $('#editSongsModal').on('click', 'button#editSongsModalSubmit', handleUpdateSongsSave);
 // });
+// 
+
 // function handleUpdateSongsSave(event) {
 //   // build all the songs objects up
 //   var $modal = $('#editSongsModal');
@@ -225,6 +230,15 @@ function renderMultipleShoes(shoes) {
   });
 }
 
+function fetchAndReRenderShoeWithId(shoeId) {
+  $.get('/api/shoes/' + shoeId, function(data) {
+    // remove the current instance of the album from the page
+    $('div[data-shoe-id=' + shoeId + ']').remove();
+    // re-render it with the new album data (including songs)
+    renderShoe(data);
+  });
+}
+
 function renderBrand(brand){
   // return `<span>&ndash; (${song.trackNumber}) ${song.name} &ndash;</span>`
 }
@@ -235,16 +249,15 @@ function renderShoes(shoe) {
 
   var shoeHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
-      <div class="col m10 offset-m1">
+      <div class="col s12 m12 l12">
         <div class="panel panel-default">
           <div class="panel-body">
-
           <!-- begin shoe internal row -->
             <div class='row'>
-              <div class="col m3 s12 thumbnail shoe-art">
+              <div class="col s12 m6 l6 thumbnail shoe-art">
                 <img src="${shoe.images}" alt="shoe image">
               </div>
-              <div class="col m9 s12">
+              <div class="col s12 m6 l6">
                 <ul class="list-group">
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
@@ -271,7 +284,7 @@ function renderShoes(shoe) {
                     <span class='shoe-type'>${shoe.type}</span>
                   </li>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Drop Location</h4>
+                    <h4 class='inline-header'>Drop Location: </h4>
                     <span class='shoe-drop-location'>${shoe.dropLocation}</span>
                   </li>
                   <li class="list-group-item">
@@ -284,7 +297,7 @@ function renderShoes(shoe) {
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
               <div class='panel-footer'>
-                <button class='btn btn-primary add-comment'>Add Comment</button>
+                <button class='btn btn-primary add-comment'>Add a Review</button>
               </div>
             </div>
           </div>
@@ -293,4 +306,44 @@ function renderShoes(shoe) {
     </div>
   `);
   $('#shoes').prepend(shoeHtml);
+}
+
+// when the add review button is clicked, display the modal
+function handleReviewClick(e) {
+  console.log('add-review clicked!');
+  var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
+  console.log('id',currentShoeId);
+  $('#reviewModal').data('shoe-id', currentShoeId);
+  $('#reviewModal').modal();  // display the modal!
+}
+
+// when the review modal submit button is clicked:
+function handleReviewSubmit(e) {
+  e.preventDefault();
+  var $modal = $('#reviewModal');
+  var $userNameField = $modal.find('#userName');
+  var $reviewField = $modal.find('#review');
+  // get data from modal fields
+  // note the server expects the keys to be 'name', 'trackNumber' so we use those.
+  var dataToPost = {
+    username: $userNameField.val(),
+    review: $reviewField.val()
+  };
+  var shoeId = $modal.data('shoeId');
+  console.log('retrieved userName:', userName, ' and review:', review, ' for shoe w/ id: ', shoeId);
+  // POST to SERVER
+  var reviewPostToServerUrl = '/api/shoes/'+ shoeId + '/source';
+  $.post(reviewPostToServerUrl, dataToPost, function(data) {
+    console.log('received data from post to /source:', data);
+    // clear form
+    $userNameField.val('');
+    $reviewField.val('');
+
+    // close modal
+    $modal.modal('hide');
+    // update the correct album to show the new song
+    fetchAndReRenderShoeWithId(shoeId);
+  }).error(function(err) {
+    console.log('post to /api/shoe/:shoeId/source resulted in error', err);
+  });
 }
