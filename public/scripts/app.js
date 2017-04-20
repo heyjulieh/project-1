@@ -269,11 +269,11 @@ function renderBrands(brand){
           <!-- begin brand internal row -->
             <div class='row'>
               <div class="col s12 m6 l6 thumbnail shoe-art">
-                <img src="${brand.image}" alt="brand image">
+                <img class="brand-img" src="${brand.image}" alt="brand image">
               </div>
 
               <div class="col s12 m6 l6">
-                <ul class="list-group">
+                <ul id="brand" class="list-group">
                   <li class="list-group-item">
                     <h4 class='inline-header'>Brand Name:</h4>
                     <span class='brand-name'>${brand.name}</span>
