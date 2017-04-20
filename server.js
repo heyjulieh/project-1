@@ -109,7 +109,7 @@ app.post('/api/source', createShoe);
 
 app.delete('/api/source/:shoeId', deleteShoe);
   function deleteShoe(req,res){
-    db.UserShoe.findOneAndRemove({ _id: req.params.shoeId }, function(err, foundShoe){
+    db.Shoe.findOneAndRemove({ _id: req.params.shoeId }, function(err, foundShoe){
     // note you could send just send 204, but we're sending 200 and the deleted entity
     res.json(foundShoe);
   });
