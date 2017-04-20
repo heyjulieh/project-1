@@ -66,12 +66,22 @@ var shoeList =[];
               colorway: 'Team Royal/Taxi',
               price: '$120',
               releaseDate: 'April 15, 2017',
-              type: ['Basketball', 'fitness'],
+              type: ['Basketball', 'Fitness'],
               dropLocation: ['Los Angeles', 'San Francisco'],
               editor: 'Kevin Tse',
               images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/Under-Armour-Curry-3ZER0.jpg?x77385'
             });
-
+  shoeList.push({
+              brand: 'Adidas',
+              name: 'ADIDAS ULTRA BOOST 3.0 LTD',
+              colorway: 'Bronze',
+              price: '$TBD',
+              releaseDate: 'May 31, 2017',
+              type: ['Running', 'Fitness', 'Walking'],
+              dropLocation: ['Los Angeles', 'San Francisco'],
+              editor: 'Kevin Tse',
+              images: 'https://newsneakernews-wpengine.netdna-ssl.com/wp-content/uploads/2017/03/adidas-ultra-boost-3-bronze-boost.jpg'
+            });
 
 
 

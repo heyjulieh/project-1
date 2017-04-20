@@ -244,36 +244,46 @@ function renderShoes(shoe) {
               <div class="col m3 s12 thumbnail shoe-art">
                 <img src="${shoe.images}" alt="shoe image">
               </div>
+
               <div class="col m9 s12">
+                
                 <ul class="list-group">
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
                     <span class='shoe-name'>${shoe.name}</span>
                   </li>
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Brand Name:</h4>
                     <span class='shoe-brand'>${shoe.brand}</span>
                   </li>
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Colorway:</h4>
                     <span class='shoe-colorway'>${shoe.colorway}</span>
                   </li>
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Price:</h4>
                     <span class='shoe-price'>${shoe.price}</span>
                   </li>
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Released Date:</h4>
                     <span class='shoe-releaseDate'>${shoe.releaseDate}</span>
                   </li>
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Type:</h4>
                     <span class='shoe-type'>${shoe.type}</span>
                   </li>
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Drop Location</h4>
                     <span class='shoe-drop-location'>${shoe.dropLocation}</span>
                   </li>
+                  
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Pick Editor:</h4>
                     <span class='shoe-editor'>${shoe.editor}</span>
