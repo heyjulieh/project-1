@@ -93,23 +93,23 @@ function renderShoes(shoe) {
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
                     <span id="name" class='shoe-name' value="name" name="name">${shoe.name}</span>
-                  </li><br>
+                  </li><br><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Brand Name:</h4>
                     <span id="brandName" class='shoe-brand' value="brand" name="brand">${shoe.brand}</span>
-                  </li><br>
+                  </li><br><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Colorway:</h4>
                     <span id="colorway" class='shoe-colorway' value="colorway" name="colorway">${shoe.colorway}</span>
-                  </li><br>
+                  </li><br><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Released Date:</h4>
                     <span id="releaseDate" class='shoe-releaseDate' value="releaseDate" name="releaseDate">${shoe.releaseDate}</span>
-                  </li><br>
+                  </li><br><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Rating:</h4>
                     <span id="rating" class='shoe-rating' value="rating" name="rating">${shoe.rating}</span>
-                  </li><br>
+                  </li><br><br>
                   <li class="list-group-item">
                     <h4 class='inline-header'>Username: </h4>
                     <span id="username" class='shoe-editor' value="name" name="editor">${shoe.editor}</span>
