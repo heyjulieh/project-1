@@ -130,11 +130,23 @@ app.delete('/api/source/:shoeId', deleteShoe);
   });
   }
 
-// update shoe info
+// update a shoe
 app.put('/api/source/:shoeId', updateShoe);
-  function updateShoe(req,res) {
-    console.log('this works.')
-
+  function updateShoe(req, res) {
+    console.log('updating with data', req.body);
+      db.Shoe.findById(req.params.shoeId, function(err, foundShoe) {
+        if(err) { console.log('shoes.update error', err); }
+          foundShoe.brand = req.body.brand;
+          foundShoe.name = req.body.name;
+          foundShoe.colorway = req.body.colorway;
+          foundShoe.releaseDate = req.body.releaseDate;
+          foundShoe.rating = req.body.rating;
+          foundShoe.editor = req.body.editor;
+          foundShoe.save(function(err, savedShoe) {
+            if(err) { console.log('saving altered shoe failed'); }
+            res.json(savedShoe);
+      });
+    });
   }
 
   app.listen(process.env.PORT || 5000, function () {
