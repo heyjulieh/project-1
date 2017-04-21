@@ -9,7 +9,10 @@ var ShoeSchema = new Schema({
   // 	ref: 'Brand'
   // },
   brand: String,
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   colorway: String,
   price: String,
   releaseDate: String,
@@ -17,7 +20,12 @@ var ShoeSchema = new Schema({
   dropLocation: [String],
   editor: String,
   images: String,
-  rating: Number
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+  },
+  username: String
 });
 
 var Shoe = mongoose.model('Shoe', ShoeSchema);

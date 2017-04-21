@@ -44,7 +44,7 @@ $(document).ready(function() {
   });
 });
 
-  
+
 function renderMultipleBrands(brands) {
   console.log (brands);
   brands.forEach(function(brand) {
@@ -160,8 +160,8 @@ function renderShoes(shoe) {
                     <span id="rating" class='shoe-rating'>${shoe.rating}</span>
                   </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>UserName: </h4>
-                    <span id="userName" class='shoe-editor'>${shoe.editor}</span>
+                    <h4 class='inline-header'>Username: </h4>
+                    <span id="username" class='shoe-editor'>${shoe.editor}</span>
                   </li>
                 </ul>
               </div>
@@ -194,7 +194,7 @@ function handleDeleteShoeClick(e) {
     success: handleDeleteShoeSuccess
   });
 }
-// callback after DELETE /api/albums/:id
+// callback after DELETE /api/shoes/:id
 function handleDeleteShoeSuccess(data) {
   var deletedShoeId = data._id;
   console.log('removing the following shoe from the page:', deletedShoeId);

@@ -36,21 +36,9 @@ var shoeList =[];
               type: ['Basketball', 'Fitness'],
               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
               editor: 'Kevin Tse',
-              images: 'http://images.nike.com/is/image/DotCom/PDP_HERO/852425_001_A_PREM/kobe-ad-mens-basketball-shoe.jpg'
+              images: 'http://images.nike.com/is/image/DotCom/PDP_HERO/852425_001_A_PREM/kobe-ad-mens-basketball-shoe.jpg',
+              rating: 5
             });
-            var shoeList =[];
-              shoeList.push
-                          ({
-                          brand: 'Nike',
-                          name: 'Kobe AD',
-                          colorway: "Black/Black/White",
-                          price: '$160',
-                          releaseDate: 'November 22, 2017',
-                          type: ['Basketball', 'Fitness'],
-                          dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
-                          editor: 'Julie Huang',
-                          images: 'http://images.nike.com/is/image/DotCom/PDP_HERO/852425_001_A_PREM/kobe-ad-mens-basketball-shoe.jpg'
-                        });
   shoeList.push({
               brand: 'Nike',
               name: 'PG 1 Flip the Switch',
@@ -60,7 +48,8 @@ var shoeList =[];
               type: ['Basketball', 'Fitness'],
               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
               editor: 'Kevin Tse',
-              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/nike-pg-1-flip-the-switch-1.jpg?x77385'
+              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/nike-pg-1-flip-the-switch-1.jpg?x77385',
+              rating: 5
             });
   shoeList.push({
               brand: 'Nike',
@@ -71,7 +60,8 @@ var shoeList =[];
               type: ['Lifestyle', 'Running', 'Walking', 'Basketball'],
               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
               editor: 'Kevin Tse',
-              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/01/copper-nike-foamposite-one.jpg?x77385'
+              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/01/copper-nike-foamposite-one.jpg?x77385',
+              rating: 5
             });
   shoeList.push({
               brand: 'Under-Armour',
@@ -82,7 +72,8 @@ var shoeList =[];
               type: ['Basketball', 'Fitness'],
               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
               editor: 'Kevin Tse',
-              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/Under-Armour-Curry-3ZER0.jpg?x77385'
+              images: 'https://cdn5.kicksonfire.com/wp-content/uploads/2017/04/Under-Armour-Curry-3ZER0.jpg?x77385',
+              rating: 5
               });
 
   shoeList.push({
@@ -94,7 +85,8 @@ var shoeList =[];
               type: ['Running', 'Fitness', 'Walking'],
               dropLocation: ['Los Angeles', 'San Francisco'],
               editor: 'Kevin Tse',
-              images: 'https://newsneakernews-wpengine.netdna-ssl.com/wp-content/uploads/2017/03/adidas-ultra-boost-3-bronze-boost.jpg'
+              images: 'https://newsneakernews-wpengine.netdna-ssl.com/wp-content/uploads/2017/03/adidas-ultra-boost-3-bronze-boost.jpg',
+              rating: 5
             });
 
 
