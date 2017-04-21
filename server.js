@@ -58,21 +58,22 @@ app.get('/api', showIndex);
     console.log('this works.')
     res.send('this works.')
   }
-// show all shoes
+// show all shoes on api/shoes
 app.get('/api/shoes', function(req,res) {
     console.log('this works.')
-    // get all books
     db.Shoe.find({}, function(err, allShoes){
       res.json(allShoes);
     });
 });
 
-//
+// show all shoes on api/source
 app.get('/api/source', function(req,res) {
     console.log('this works.')
-    res.json('this works');
-
+    db.Shoe.find({}, function(err, allShoes){
+      res.json(allShoes);
+  });
 });
+
 // show all brands
 app.get('/api/brands', function(req,res) {
     console.log('this works.')
@@ -81,13 +82,6 @@ app.get('/api/brands', function(req,res) {
       res.json(allBrands);
     });
 });
-// get one book
-// app.get('/api/books/:id', function (req, res) {
-//   console.log('request url params:', req.params)
-//   db.Book.findOne({_id: req.params.id }, function(err, data) {
-//     res.json(data);
-//   });
-// });
 
 // show specific shoe
 app.get('/api/shoes/:shoeId', showSpecificShoe);
@@ -96,8 +90,8 @@ app.get('/api/shoes/:shoeId', showSpecificShoe);
     res.send('this works.')
   }
 
-// post anc\d create a new shoe
-app.post('/api/shoes', createShoe);
+// post and create a new shoe on source page
+app.post('/api/source', createShoe);
   function createShoe(req, res) {
   db.Shoe.create(req.body, function(err, shoe) {
     if (err) { console.log('error', err); }
@@ -106,17 +100,33 @@ app.post('/api/shoes', createShoe);
   });
 }
 
-app.delete('/api/shoes/:shoeId', deleteShoeComment);
-  function deleteShoeComment(req,res){
-    console.log('this works.')
-    res.send('this works.')
+// delete a shoe
+app.delete('/api/source/:shoeId', deleteShoe);
+  function deleteShoe(req,res){
+    db.Shoe.findOneAndRemove({ _id: req.params.shoeId }, function(err, foundShoe){
+    // note you could send just send 204, but we're sending 200 and the deleted entity
+    res.json(foundShoe);
+  });
   }
 
-app.put('/api/shoes/:shoeId', updateShoeComment);
-  function updateShoeComment(req,res) {
-    console.log('this works.')
-
-  }
+// update a shoe
+app.put('/api/source/:shoeId', updateShoe);
+  function updateShoe(req, res) {
+    console.log('updating with data', req.body);
+      db.Shoe.findById(req.params.shoeId, function(err, shoeAlbum) {
+        if(err) { console.log('shoes.update error', err); }
+        foundShoe.brand = req.body.brand;
+        foundShoe.name = req.body.name;
+        foundShoe.colorway = req.body.colorway;
+        foundShoe.releaseDate = req.body.releaseDate;
+        foundShoe.rating = req.body.rating;
+        foundShoe.editor = req.body.editor;
+        foundShoe.save(function(err, savedShoe) {
+          if(err) { console.log('saving altered shoe failed'); }
+          res.json(savedShoe);
+    });
+  });
+}
 
   app.listen(process.env.PORT || 5000, function () {
     console.log('Listening at http://localhost:5000/');
