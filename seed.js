@@ -26,8 +26,7 @@ var brandList = [];
                 });
 
 var shoeList =[];
-  shoeList.push
-              ({
+  shoeList.push({
               brand: 'Nike',
               name: 'Kobe AD',
               colorway: "Black/Black/White",
