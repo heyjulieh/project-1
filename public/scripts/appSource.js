@@ -85,11 +85,11 @@ function renderShoes(shoe) {
           <div class="panel-body">
           <!-- begin shoe internal row -->
             <div class='row'>
-              <div class="col s12 m6 l6 thumbnail shoe-art">
+              <div class="col s6 m6 l6 thumbnail shoe-art">
                 <img id="images" src="${shoe.images}" alt="shoe image">
               </div>
               <div class="col s12 m6 l6">
-                <ul class="list-group">
+                <ul class="list-group" id="sourcelist">
                   <li class="list-group-item">
                     <h4 class='inline-header'>Shoe Name:</h4>
                     <span id="name" class='shoe-name' value="name" name="name">${shoe.name}</span>
@@ -121,7 +121,7 @@ function renderShoes(shoe) {
             <div class='panel-footer'>
               <button id="edit-button" name="edit-button" class="btn btn-primary">Edit</button>
               <button id="delete-button" name="delete-button" class="btn btn-danger">Delete</button>
-              <button class='btn btn-success save-shoe hidden'>Save</button>
+              <button id="save-button" class="btn btn-success save-shoe hidden">Save Edits</button>
               </div>
             </div>
           </div>
