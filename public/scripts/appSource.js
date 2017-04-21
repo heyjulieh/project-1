@@ -77,56 +77,7 @@ function fetchAndReRenderShoeWithId(shoeId) {
   });
 }
 
-function renderBrands(brand){
-  console.log('rendering brand', brand);
-    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
-
-  var brandHtml = (`
-    <div class="row brand" data-brand-id="${brand._id}">
-      <div class="col s12 m12 l12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-          <!-- begin brand internal row -->
-            <div class='row'>
-              <div class="col s12 m6 l6 thumbnail brand-art">
-                <img class="brand-img" src="${brand.image}" alt="brand image">
-              </div>
-              <div class="col s12 m6 l6">
-                <ul id="brand" class="list-group">
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Brand Name:</h4>
-                    <span class='brand-name'>${brand.name}</span>
-                  </li><br>
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Established:</h4>
-                    <span class='brand-establishDate'>${brand.establishDate}</span>
-                  </li><br>
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Origin:</h4>
-                    <span class='brand-location'>${brand.location}</span>
-                  </li><br>
-                </ul>
-              </div>
-            </div>
-            <!-- end of brand internal row -->
-            <div class='panel-footer'>
-            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Edit</button>
-            <button id="singlebutton" name="singlebutton" class="btn btn-danger">Delete</button>
-              <div class='panel-footer'>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `);
-  $('#brands').prepend(brandHtml);
-}
-
-
 function renderShoes(shoe) {
-
   var sourceHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
       <div class="col s12 m12 l12">
@@ -169,7 +120,7 @@ function renderShoes(shoe) {
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
             <button id="singlebutton" name="singlebutton" class="btn btn-primary">Edit</button>
-            <button id="singlebutton" name="singlebutton" class="btn btn-danger">Delete</button>
+            <button id="delete-button" name="delete-button" class="btn btn-danger">Delete</button>
               <div class='panel-footer'>
 
               </div>
@@ -180,23 +131,27 @@ function renderShoes(shoe) {
     </div>
   `);
   $('#shoes').prepend(sourceHtml);
+  $('#shoes').on('click', '#delete-button', handleDeleteShoeClick);
 }
 
-$('#shoes').on('click', '.delete-shoe', handleDeleteShoeClick);
 
-// when a delete button for an album is clicked
-function handleDeleteShoeClick(e) {
-  var shoeId = $(this).parents('.shoe').data('shoe-id');
-  console.log('someone wants to delete shoe id=' + shoeId );
-  $.ajax({
-    url: '/api/shoes/' + shoeId,
-    method: 'DELETE',
-    success: handleDeleteShoeSuccess
-  });
-}
-// callback after DELETE /api/shoes/:id
-function handleDeleteShoeSuccess(data) {
-  var deletedShoeId = data._id;
-  console.log('removing the following shoe from the page:', deletedShoeId);
-  $('div[data-shoe-id=' + deletedShoeId + ']').remove();
-}
+
+// when a delete button is clicked
+
+console.log('button clicked!');
+  function handleDeleteShoeClick(e) {
+    var shoeId = $(this).parents('.shoe').data('shoe-id');
+    console.log('you are going to delete this shoe id=' + shoeId );
+    $.ajax({
+      url: '/api/source/' + shoeId,
+      method: 'DELETE',
+      success: handleDeleteShoeSuccess
+    });
+  }
+
+  // callback after DELETE /api/shoes/:id
+  function handleDeleteShoeSuccess(data) {
+    var deletedShoeId = data._id;
+    console.log('removing the following shoe from the page:', deletedShoeId);
+    $('div[data-shoe-id=' + deletedShoeId + ']').remove();
+  }

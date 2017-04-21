@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
    //  we want to use them
    next();
  }
- app.use(logRequestInfo);
 
+ app.use(logRequestInfo);
 
 /**********
  * ROUTES *
@@ -52,11 +52,12 @@ app.get('/contact', function homepage (req, res) {
 /*
  * JSON API Endpoints
  */
-// index
+
+// show index
 app.get('/api', showIndex);
   function showIndex(req,res){
     console.log('this works.')
-    res.send('this works.')
+    res.send('nothing here yet.')
   }
 // show all shoes on api/shoes
 app.get('/api/shoes', function(req,res) {
@@ -93,9 +94,21 @@ app.get('/api/brands', function(req,res) {
 // show specific shoe
 app.get('/api/shoes/:shoeId', showSpecificShoe);
   function showSpecificShoe(req,res) {
-    console.log('this works.')
-    res.send('this works.')
-  }
+  db.Shoe.findById(req.params.shoeId, function(err, foundShoe) {
+    if(err) { throw err; }
+    res.json(foundShoe);
+  });
+}
+
+// show specific shoe from Source
+app.get('/api/source/:shoeId', showSpecificSource);
+  function showSpecificSource(req,res) {
+  db.Shoe.findById(req.params.shoeId, function(err, foundSource) {
+    if(err) { throw err; }
+    res.json(foundSource);
+  });
+}
+
 
 // post and create a new shoe on source page
 app.post('/api/source', createShoe);
@@ -107,14 +120,17 @@ app.post('/api/source', createShoe);
   });
 }
 
+// delete shoe on source
 app.delete('/api/source/:shoeId', deleteShoe);
   function deleteShoe(req,res){
-    db.Shoe.findOneAndRemove({ _id: req.params.shoeId }, function(err, foundShoe){
+    db.Shoe.findOneAndRemove({ _id: req.params.shoeId}, function(err, foundShoe){
     // note you could send just send 204, but we're sending 200 and the deleted entity
     res.json(foundShoe);
+    console.log('shoe deleted!');
   });
   }
 
+// update shoe info
 app.put('/api/source/:shoeId', updateShoe);
   function updateShoe(req,res) {
     console.log('this works.')

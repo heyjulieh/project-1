@@ -20,8 +20,6 @@ $(document).ready(function() {
   });
 });
 
-var editorList =[];
-
 function renderMultipleBrands(brands) {
   console.log (brands);
   brands.forEach(function(brand) {
