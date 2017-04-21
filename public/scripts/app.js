@@ -166,43 +166,4 @@ function renderShoes(shoe) {
   $('#shoes').prepend(shoeHtml);
 }
 
-// when the add review button is clicked, display the modal
 
-// function handleReviewClick(e) {
-//   console.log('add-review clicked!');
-//   var currentShoeId = $(this).closest('.shoe').data('shoe-id'); // "5665ff1678209c64e51b4e7b"
-//   console.log('id',currentShoeId);
-//   $('#modal1').data('shoe-id', currentShoeId);
-//   $('#modal1').modal1();  // display the modal!
-// }
-
-// when the review modal submit button is clicked:
-// function handleReviewSubmit(e) {
-//   e.preventDefault();
-//   var $modal = $('#reviewModal');
-//   var $userNameField = $modal.find('#userName');
-//   var $reviewField = $modal.find('#review');
-//   // get data from modal fields
-//   // note the server expects the keys to be 'name', 'trackNumber' so we use those.
-//   var dataToPost = {
-//     username: $userNameField.val(),
-//     review: $reviewField.val()
-//   };
-//   var shoeId = $modal.data('shoeId');
-//   console.log('retrieved userName:', userName, ' and review:', review, ' for shoe w/ id: ', shoeId);
-//   // POST to SERVER
-//   var reviewPostToServerUrl = '/api/shoes/'+ shoeId + '/source';
-//   $.post(reviewPostToServerUrl, dataToPost, function(data) {
-//     console.log('received data from post to /source:', data);
-//     // clear form
-//     $userNameField.val('');
-//     $reviewField.val('');
-//
-//     // close modal
-//     $modal.modal('hide');
-//     // update the correct album to show the new song
-//     fetchAndReRenderShoeWithId(shoeId);
-//   }).error(function(err) {
-//     console.log('post to /api/shoe/:shoeId/source resulted in error', err);
-//   });
-// }

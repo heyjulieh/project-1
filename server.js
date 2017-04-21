@@ -82,13 +82,6 @@ app.get('/api/brands', function(req,res) {
       res.json(allBrands);
     });
 });
-// get one book
-// app.get('/api/books/:id', function (req, res) {
-//   console.log('request url params:', req.params)
-//   db.Book.findOne({_id: req.params.id }, function(err, data) {
-//     res.json(data);
-//   });
-// });
 
 // show specific shoe
 app.get('/api/shoes/:shoeId', showSpecificShoe);
@@ -107,6 +100,7 @@ app.post('/api/source', createShoe);
   });
 }
 
+// delete a shoe
 app.delete('/api/source/:shoeId', deleteShoe);
   function deleteShoe(req,res){
     db.Shoe.findOneAndRemove({ _id: req.params.shoeId }, function(err, foundShoe){
@@ -115,11 +109,24 @@ app.delete('/api/source/:shoeId', deleteShoe);
   });
   }
 
+// update a shoe
 app.put('/api/source/:shoeId', updateShoe);
-  function updateShoe(req,res) {
-    console.log('this works.')
-
-  }
+  function updateShoe(req, res) {
+    console.log('updating with data', req.body);
+      db.Shoe.findById(req.params.shoeId, function(err, shoeAlbum) {
+        if(err) { console.log('shoes.update error', err); }
+        foundShoe.brand = req.body.brand;
+        foundShoe.name = req.body.name;
+        foundShoe.colorway = req.body.colorway;
+        foundShoe.releaseDate = req.body.releaseDate;
+        foundShoe.rating = req.body.rating;
+        foundShoe.editor = req.body.editor;
+        foundShoe.save(function(err, savedShoe) {
+          if(err) { console.log('saving altered shoe failed'); }
+          res.json(savedShoe);
+    });
+  });
+}
 
   app.listen(process.env.PORT || 5000, function () {
     console.log('Listening at http://localhost:5000/');
