@@ -22,7 +22,7 @@ var brandList = [];
                 name: 'Under-Armour',
                 establishDate: 'December 7, 1996',
                 location: 'Washington D.C.',
-                image: 'https://lh4.googleusercontent.com/-S0MX0flnwLI/AAAAAAAAAAI/AAAAAAAAAsk/pyavDK7bTCI/s0-c-k-no-ns/photo.jpg'
+                image: 'http://www.logospike.com/wp-content/uploads/2015/05/Under_Armour_Logo_01.png'
                 });
 
                 var shoeList =[];
@@ -120,7 +120,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Running', 'Walking', 'Urbanwear'],
                               dropLocation: ['Retail Locations'],
                               editor: 'Kevin Tse',
-                              images: 'https://stockx-360.imgix.net/adidas-nmd-core-black-lush-red_TruView/Images/adidas-nmd-core-black-lush-red_TruView/Lv2/img01.jpg',
+                              images: 'https://cdn.kickgame.co.uk/image/cache/data/nmd/new2/adidas-nmd-runner-pk-black-white-rd-blu-201194_new-1300x1300.jpg',
                               rating: 5
                             });
                 shoeList.push({
@@ -132,7 +132,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Basketball'],
                               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
                               editor: 'Kevin Tse',
-                              images: 'https://stockx-360.imgix.net/Air-Jordan-1-Retro-Bred-2016_TruView/Images/Air-Jordan-1-Retro-Bred-2016_TruView/Lv2/img01.jpg',
+                              images: 'https://www.flightclub.com/media/catalog/product/cache/1/image/800x570/9df78eab33525d08d6e5fb8d27136e95/6/3/63611743036-air-jordan-1-retro-high-og-bg-gs-bred-black-varsity-red-white-011846_2.jpg',
                               rating: 5
                             });
                 shoeList.push({
@@ -144,7 +144,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Running', 'Walking', 'Urbanwear'],
                               dropLocation: ['Online and Retail Stores'],
                               editor: 'Julie Huang',
-                              images: 'https://stockx-360.imgix.net/Adidas-Yeezy-Boost-350-Low-Turtledove_TruView/Images/Adidas-Yeezy-Boost-350-Low-Turtledove_TruView/Lv2/img02.jpg',
+                              images: 'https://stockx.imgix.net/Adidas-Yeezy-Boost-350-Low-Turtle-Dove-I.png?fit=fillmax&bg=FFFFFF&w=700&h=500&auto=compress',
                               rating: 5
                             });
                 shoeList.push({
@@ -192,7 +192,7 @@ var brandList = [];
                               type: ['Running', 'Fitness', 'Walking'],
                               dropLocation: ['Los Angeles', 'San Francisco'],
                               editor: 'Julie Huang',
-                              images: 'https://stockx-360.imgix.net/Adidas-NMD-HU-Pharrell-Williams-Yellow_TruView/Images/Adidas-NMD-HU-Pharrell-Williams-Yellow_TruView/Lv2/img01.jpg',
+                              images: 'https://www.flightclub.com/media/catalog/product/cache/1/image/800x570/9df78eab33525d08d6e5fb8d27136e95/6/3/63611743073-adidas-pw-human-race-nmd-human-race-yellow-black-201357_4.jpg',
                               rating: 5
                             });
                 shoeList.push({
@@ -228,7 +228,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Basketball'],
                               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
                               editor: 'Kevin Tse',
-                              images: 'https://stockx-360.imgix.net/Air-Jordan-4-Retro-Eminem-Carhartt_TruView/Images/Air-Jordan-4-Retro-Eminem-Carhartt_TruView/Lv2/img01.jpg',
+                              images: 'https://www.flightclub.com/media/catalog/product/cache/1/image/800x570/9df78eab33525d08d6e5fb8d27136e95/a/i/air-jordan-4-retro-carhartt-x-eminem-blk-chrome-white-012355_2.jpg',
                               rating: 5
                             });
                 shoeList.push({
@@ -240,7 +240,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Running', 'Walking', 'Urbanwear'],
                               dropLocation: ['Online and Retail Stores'],
                               editor: 'Julie Huang, Kevin Tse',
-                              images: 'https://stockx-360.imgix.net/adidas-y3-pure-boost-zg-knit-core-black_TruView/Images/adidas-y3-pure-boost-zg-knit-core-black_TruView/Lv2/img01.jpg',
+                              images: 'https://cdn.shopify.com/s/files/1/0049/9112/products/BTKA_14601386960749998_b14eeed298cffcb879672497ee2bef_1024x1024.jpeg?v=1460138865',
                               rating: 5
                             });
                 shoeList.push({
@@ -252,7 +252,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Running', 'Walking', 'Urbanwear'],
                               dropLocation: ['Online and Retail Stores'],
                               editor: 'Julie Huang',
-                              images: 'https://stockx-360.imgix.net/Adidas-Ultra-Boost-LTD-Light-Tan-Cream_TruView/Images/Adidas-Ultra-Boost-LTD-Light-Tan-Cream_TruView/Lv2/img01.jpg',
+                              images: 'https://newsneakernews-wpengine.netdna-ssl.com/wp-content/uploads/2015/12/adidas-ultra-boost-qs-cream-2.jpg',
                               rating: 5
                             });
                 shoeList.push({
@@ -264,7 +264,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Basketball', 'Urbanwear'],
                               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
                               editor: 'Kevin Tse',
-                              images: 'https://stockx-360.imgix.net/Air-Foamposite-One-Supreme-NYC-Black_TruView/Images/Air-Foamposite-One-Supreme-NYC-Black_TruView/Lv2/img01.jpg',
+                              images: 'https://www.flightclub.com/media/catalog/product/cache/1/image/800x570/9df78eab33525d08d6e5fb8d27136e95/n/i/nike-air-foamposite-1-supreme-sp-supreme-black-black-metallic-gold-042117_2.png',
                               rating: 5
                             });
                 shoeList.push({
@@ -276,7 +276,7 @@ var brandList = [];
                               type: ['Lifestyle', 'Basketball'],
                               dropLocation: ['Foot Locker House of Hoops', 'Champs', 'Footaction'],
                               editor: 'Kevin Tse',
-                              images: 'https://stockx-360.imgix.net/Air-Jordan-1-Retro-Fragment_TruView/Images/Air-Jordan-1-Retro-Fragment_TruView/Lv2/img01.jpg',
+                              images: 'https://www.flightclub.com/media/catalog/product/cache/1/image/800x570/9df78eab33525d08d6e5fb8d27136e95/6/3/63611742948-air-jordan-1-x-fragment-fragment-black-sport-royal-white-012101_1.jpg',
                               rating: 5
                             });
                 shoeList.push({
@@ -288,7 +288,7 @@ var brandList = [];
                               type: ['Running', 'Fitness', 'Walking'],
                               dropLocation: ['Los Angeles', 'San Francisco'],
                               editor: 'Julie Huang',
-                              images: 'https://stockx-360.imgix.net/Yeezy-Boost-350-Low-V2-Beluga_TruView/Images/Yeezy-Boost-350-Low-V2-Beluga_TruView/Lv2/img01.jpg',
+                              images: 'https://cdn.shopify.com/s/files/1/0230/0485/products/IMG_1144_large.JPG?v=1484190813',
                               rating: 5
                             });
                 shoeList.push({
@@ -300,7 +300,7 @@ var brandList = [];
                               type: ['Running', 'Fitness', 'Walking'],
                               dropLocation: ['Los Angeles', 'San Francisco'],
                               editor: 'Julie Huang, Kevin Tse',
-                              images: 'https://stockx-360.imgix.net/Nike-Air-Yeezy-2-Red-October_TruView/Images/Nike-Air-Yeezy-2-Red-October_TruView/Lv2/img01.jpg',
+                              images: 'https://www.flightclub.com/media/catalog/product/cache/1/image/800x570/9df78eab33525d08d6e5fb8d27136e95/n/i/nike-air-yeezy-2-sp-red-october-red-red-090148_1.jpg',
                               rating: 5
                             });
                 shoeList.push({
