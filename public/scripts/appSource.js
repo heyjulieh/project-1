@@ -4,7 +4,7 @@ console.log('Sanity Check!');
 $(document).ready(function() {
   console.log('app.js loaded!');
 
-// Prevent user from inputing anything other than numbers
+// Prevent user from inputing anything other than numbers in rating
   $("#rating").keydown(function (e) {
          // Allow: backspace, delete, tab, escape, enter and .
          if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
@@ -77,56 +77,7 @@ function fetchAndReRenderShoeWithId(shoeId) {
   });
 }
 
-function renderBrands(brand){
-  console.log('rendering brand', brand);
-    // shoe.brandHtml = shoe.brand.map(renderBrand).join("");
-
-  var brandHtml = (`
-    <div class="row brand" data-brand-id="${brand._id}">
-      <div class="col s12 m12 l12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-          <!-- begin brand internal row -->
-            <div class='row'>
-              <div class="col s12 m6 l6 thumbnail brand-art">
-                <img class="brand-img" src="${brand.image}" alt="brand image">
-              </div>
-              <div class="col s12 m6 l6">
-                <ul id="brand" class="list-group">
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Brand Name:</h4>
-                    <span class='brand-name'>${brand.name}</span>
-                  </li><br>
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Established:</h4>
-                    <span class='brand-establishDate'>${brand.establishDate}</span>
-                  </li><br>
-                  <li class="list-group-item">
-                    <h4 class='inline-header'>Origin:</h4>
-                    <span class='brand-location'>${brand.location}</span>
-                  </li><br>
-                </ul>
-              </div>
-            </div>
-            <!-- end of brand internal row -->
-            <div class='panel-footer'>
-            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Edit</button>
-            <button id="singlebutton" name="singlebutton" class="btn btn-danger">Delete</button>
-              <div class='panel-footer'>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `);
-  $('#brands').prepend(brandHtml);
-}
-
-
 function renderShoes(shoe) {
-
   var sourceHtml = (`
     <div class="row shoe" data-shoe-id="${shoe._id}">
       <div class="col s12 m12 l12">
@@ -134,44 +85,43 @@ function renderShoes(shoe) {
           <div class="panel-body">
           <!-- begin shoe internal row -->
             <div class='row'>
-              <div class="col s12 m6 l6 thumbnail shoe-art">
+              <div class="col s6 m6 l6 thumbnail shoe-art">
                 <img id="images" src="${shoe.images}" alt="shoe image">
               </div>
               <div class="col s12 m6 l6">
                 <ul class="list-group">
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Name:</h4>
-                    <span id="name" class='shoe-name'>${shoe.name}</span>
+                    <h5 class='inline-header'>Shoe Name:</h5>
+                    <span id="name" class="shoe-name">${shoe.name}</span>
                   </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Brand Name:</h4>
-                    <span id="brandName" class='shoe-brand'>${shoe.brand}</span>
+                    <h5 class='inline-header'>Brand Name:</h5>
+                    <span id="brandName" class="shoe-brand">${shoe.brand}</span>
                   </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Colorway:</h4>
-                    <span id="colorway" class='shoe-colorway'>${shoe.colorway}</span>
+                    <h5 class='inline-header'>Shoe Colorway:</h5>
+                    <span id="colorway" class="shoe-colorway">${shoe.colorway}</span>
                   </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Released Date:</h4>
-                    <span id="releaseDate" class='shoe-releaseDate'>${shoe.releaseDate}</span>
+                    <h5 class='inline-header'>Released Date:</h5>
+                    <span id="releaseDate" class="shoe-releaseDate">${shoe.releaseDate}</span>
                   </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Rating:</h4>
-                    <span id="rating" class='shoe-rating'>${shoe.rating}</span>
+                    <h5 class='inline-header'>Shoe Rating:</h5>
+                    <span id="rating" class="shoe-rating">${shoe.rating}</span>
                   </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Username: </h4>
-                    <span id="username" class='shoe-editor'>${shoe.editor}</span>
+                    <h5 class='inline-header'>Username:</h5>
+                    <span id="username" class="shoe-editor">${shoe.editor}</span>
                   </li>
                 </ul>
               </div>
             </div>
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
-            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Edit</button>
-            <button id="singlebutton" name="singlebutton" class="btn btn-danger">Delete</button>
-              <div class='panel-footer'>
-
+              <button id="edit-button" name="edit-button" class="btn btn-primary">Edit</button>
+              <button id="delete-button" name="delete-button" class="btn btn-danger">Delete</button>
+              <button id="save-button" class="btn btn-success save-shoe hidden">Save Edits</button>
               </div>
             </div>
           </div>
@@ -180,23 +130,95 @@ function renderShoes(shoe) {
     </div>
   `);
   $('#shoes').prepend(sourceHtml);
+  $('#shoes').on('click', '#delete-button', handleDeleteShoeClick);
+  $('#shoes').on('click', '#edit-button', handleEditShoeClick);
+  $('#shoes').on('click', '.save-shoe', handleSaveChangesClick);
 }
 
-$('#shoes').on('click', '.delete-shoe', handleDeleteShoeClick);
 
-// when a delete button for an album is clicked
-function handleDeleteShoeClick(e) {
+
+// when a delete button is clicked
+
+console.log('button clicked!');
+  function handleDeleteShoeClick(e) {
+    var shoeId = $(this).parents('.shoe').data('shoe-id');
+    console.log('you are going to delete this shoe id=' + shoeId );
+    $.ajax({
+      url: '/api/source/' + shoeId,
+      method: 'DELETE',
+      success: handleDeleteShoeSuccess
+    });
+  }
+
+  // callback after DELETE /api/shoes/:id
+  function handleDeleteShoeSuccess(data) {
+    var deletedShoeId = data._id;
+    console.log('removing the following shoe from the page:', deletedShoeId);
+    $('div[data-shoe-id=' + deletedShoeId + ']').remove();
+  }
+
+  // when the edit button for a shoe is clicked
+  function handleEditShoeClick(e) {
+    var $shoeRow = $(this).closest('.shoe');
+    var shoeId = $shoeRow.data('shoe-id');
+    console.log('edit shoe', shoeId);
+    e.preventDefault();
+
+    // show the save changes button
+    $shoeRow.find('.save-shoe').toggleClass('hidden');
+    // hide the edit button
+    $shoeRow.find('.edit-shoe').toggleClass('hidden');
+
+    // get the shoe name and replace its field with an input element
+    var name = $shoeRow.find('span.shoe-name').text();
+    console.log(name);
+    $shoeRow.find('span.shoe-name').html('<input class="edit-shoe-name" value="' + name + '"></input>');
+    // get the brand name and replace its field with an input element
+    var brand = $shoeRow.find('span.shoe-brand').text();
+    console.log(brand);
+    $shoeRow.find('span.shoe-brand').html('<input class="edit-shoe-brand" value="' + brand + '"></input>');
+    // get the releasedate and replace its field with an input element
+    var releaseDate = $shoeRow.find('span.shoe-releaseDate').text();
+    $shoeRow.find('span.shoe-releaseDate').html('<input class="edit-shoe-releaseDate" value="' + releaseDate + '"></input>');
+    // get the colorway and replace its field with an input element
+    var colorway = $shoeRow.find('span.shoe-colorway').text();
+    $shoeRow.find('span.shoe-colorway').html('<input class="edit-shoe-colorway" value="' + colorway + '"></input>');
+    // get the rating and replace its field with an input element
+    var rating = $shoeRow.find('span.shoe-rating').text();
+    $shoeRow.find('span.shoe-rating').html('<input class="edit-shoe-rating" value="' + rating + '"></input>');
+    // get the editor and replace its field with an input element
+    var editor = $shoeRow.find('span.shoe-editor').text();
+    console.log(editor);
+    $shoeRow.find('span.shoe-editor').html('<input class="edit-shoe-editor" value="' + editor + '"></input>');
+  }
+// after editing an shoe, when the save changes button is clicked
+function handleSaveChangesClick(e) {
   var shoeId = $(this).parents('.shoe').data('shoe-id');
-  console.log('someone wants to delete shoe id=' + shoeId );
+  var $shoeRow = $('[data-shoe-id=' + shoeId + ']');
+  var data = {
+    name: $shoeRow.find('.edit-shoe-name').val(),
+    brand: $shoeRow.find('.edit-shoe-brand').val(),
+    releaseDate: $shoeRow.find('.edit-shoe-releaseDate').val(),
+    colorway: $shoeRow.find('.edit-shoe-colorway').val(),
+    rating: $shoeRow.find('.edit-shoe-rating').val(),
+    editor: $shoeRow.find('.edit-shoe-editor').val()
+  };
+  console.log('PUTing data for shoe', shoeId, 'with data', data);
+
   $.ajax({
-    url: '/api/shoes/' + shoeId,
-    method: 'DELETE',
-    success: handleDeleteShoeSuccess
+    method: 'PUT',
+    url: '/api/source/' + shoeId,
+    data: data,
+    success: handleShoeUpdatedResponse
   });
 }
-// callback after DELETE /api/shoes/:id
-function handleDeleteShoeSuccess(data) {
-  var deletedShoeId = data._id;
-  console.log('removing the following shoe from the page:', deletedShoeId);
-  $('div[data-shoe-id=' + deletedShoeId + ']').remove();
-}
+
+    function handleShoeUpdatedResponse(data) {
+      console.log('response to update', data);
+      var shoeId = data._id;
+      // scratch this shoe from the page
+      $('[data-shoe-id=' + shoeId + ']').remove();
+      // and then re-draw it with the updates ;-)
+      renderShoes(data);
+       $('[data-album-id=' + shoeId + ']')[0].scrollIntoView();
+    }
