@@ -4,7 +4,7 @@ console.log('Sanity Check!');
 $(document).ready(function() {
   console.log('app.js loaded!');
 
-// Prevent user from inputing anything other than numbers
+// Prevent user from inputing anything other than numbers in rating
   $("#rating").keydown(function (e) {
          // Allow: backspace, delete, tab, escape, enter and .
          if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
@@ -89,30 +89,30 @@ function renderShoes(shoe) {
                 <img id="images" src="${shoe.images}" alt="shoe image">
               </div>
               <div class="col s12 m6 l6">
-                <ul class="list-group" id="sourcelist">
+                <ul class="list-group">
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Name:</h4>
-                    <span id="name" class='shoe-name' value="name" name="name">${shoe.name}</span>
-                  </li><br><br>
+                    <h5 class='inline-header'>Shoe Name:</h5>
+                    <span id="name" class="shoe-name">${shoe.name}</span>
+                  </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Brand Name:</h4>
-                    <span id="brandName" class='shoe-brand' value="brand" name="brand">${shoe.brand}</span>
-                  </li><br><br>
+                    <h5 class='inline-header'>Brand Name:</h5>
+                    <span id="brandName" class="shoe-brand">${shoe.brand}</span>
+                  </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Colorway:</h4>
-                    <span id="colorway" class='shoe-colorway' value="colorway" name="colorway">${shoe.colorway}</span>
-                  </li><br><br>
+                    <h5 class='inline-header'>Shoe Colorway:</h5>
+                    <span id="colorway" class="shoe-colorway">${shoe.colorway}</span>
+                  </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Released Date:</h4>
-                    <span id="releaseDate" class='shoe-releaseDate' value="releaseDate" name="releaseDate">${shoe.releaseDate}</span>
-                  </li><br><br>
+                    <h5 class='inline-header'>Released Date:</h5>
+                    <span id="releaseDate" class="shoe-releaseDate">${shoe.releaseDate}</span>
+                  </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Shoe Rating:</h4>
-                    <span id="rating" class='shoe-rating' value="rating" name="rating">${shoe.rating}</span>
-                  </li><br><br>
+                    <h5 class='inline-header'>Shoe Rating:</h5>
+                    <span id="rating" class="shoe-rating">${shoe.rating}</span>
+                  </li><br>
                   <li class="list-group-item">
-                    <h4 class='inline-header'>Username: </h4>
-                    <span id="username" class='shoe-editor' value="name" name="editor">${shoe.editor}</span>
+                    <h5 class='inline-header'>Username:</h5>
+                    <span id="username" class="shoe-editor">${shoe.editor}</span>
                   </li>
                 </ul>
               </div>
@@ -170,11 +170,12 @@ console.log('button clicked!');
     $shoeRow.find('.edit-shoe').toggleClass('hidden');
 
     // get the shoe name and replace its field with an input element
-    var name = $shoeRow.find('span#shoe-name').text();
+    var name = $shoeRow.find('span.shoe-name').text();
     console.log(name);
     $shoeRow.find('span.shoe-name').html('<input class="edit-shoe-name" value="' + name + '"></input>');
     // get the brand name and replace its field with an input element
     var brand = $shoeRow.find('span.shoe-brand').text();
+    console.log(brand);
     $shoeRow.find('span.shoe-brand').html('<input class="edit-shoe-brand" value="' + brand + '"></input>');
     // get the releasedate and replace its field with an input element
     var releaseDate = $shoeRow.find('span.shoe-releaseDate').text();
@@ -203,12 +204,14 @@ function handleSaveChangesClick(e) {
     editor: $shoeRow.find('.edit-shoe-editor').val()
   };
   console.log('PUTing data for shoe', shoeId, 'with data', data);
+
   $.ajax({
     method: 'PUT',
     url: '/api/source/' + shoeId,
     data: data,
     success: handleShoeUpdatedResponse
   });
+}
 
     function handleShoeUpdatedResponse(data) {
       console.log('response to update', data);
@@ -217,5 +220,5 @@ function handleSaveChangesClick(e) {
       $('[data-shoe-id=' + shoeId + ']').remove();
       // and then re-draw it with the updates ;-)
       renderShoes(data);
+       $('[data-album-id=' + shoeId + ']')[0].scrollIntoView();
     }
-}

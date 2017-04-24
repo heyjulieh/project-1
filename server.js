@@ -130,7 +130,7 @@ app.delete('/api/source/:shoeId', deleteShoe);
   });
   }
 
-// update a shoe
+// update a shoe on source
 app.put('/api/source/:shoeId', updateShoe);
   function updateShoe(req, res) {
     console.log('updating with data', req.body);
@@ -143,7 +143,7 @@ app.put('/api/source/:shoeId', updateShoe);
           foundShoe.rating = req.body.rating;
           foundShoe.editor = req.body.editor;
           foundShoe.save(function(err, savedShoe) {
-            if(err) { console.log('saving altered shoe failed'); }
+            if(err) { console.log('the shoe was not saved'); }
             res.json(savedShoe);
       });
     });

@@ -55,6 +55,12 @@ h4 {
   color: #D4AF37;
 }
 
+h5 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  padding-right: 5px;
+}
+
 span {
   font-family: 'Rock Salt', sans-serif;
   font-size: 12px;
@@ -101,10 +107,6 @@ img {
   margin-left: 0px;
 }
 
-#sourcelist{
-  padding-bottom: -20px;
-  height: 200px;
-}
 .source {
   background-color: lightgrey;
 }
@@ -127,10 +129,12 @@ label {
 
 .contact-link {
   color: grey;
+  font-family: helvetica, sans-serif;
 }
 
 .contact-link:hover {
   color: #D2691E;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .form-group {
