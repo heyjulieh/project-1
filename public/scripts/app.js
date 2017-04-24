@@ -20,8 +20,6 @@ $(document).ready(function() {
   });
 });
 
-var editorList =[];
-
 function renderMultipleBrands(brands) {
   console.log (brands);
   brands.forEach(function(brand) {
@@ -41,7 +39,7 @@ function fetchAndReRenderBrandWithId(brandId) {
 function renderMultipleShoes(shoes) {
   console.log (shoes);
   shoes.forEach(function(shoe) {
-    if (shoe.editor === 'Kevin Tse' || shoe.editor === 'Julie Huang'){
+    if (shoe.editor === 'Kevin Tse' || shoe.editor === 'Julie Huang' || shoe.editor === 'Kevin Tse, Julie Huang' || shoe.editor === 'Julie Huang, Kevin Tse'){
     renderShoes(shoe);
     }
   });
@@ -90,7 +88,7 @@ function renderBrands(brand){
             <!-- end of brand internal row -->
             <div class='panel-footer'>
               <div class='panel-footer'>
-
+              
               </div>
             </div>
           </div>
@@ -155,7 +153,7 @@ function renderShoes(shoe) {
             <!-- end of shoe internal row -->
             <div class='panel-footer'>
               <div class='panel-footer'>
-
+              
               </div>
             </div>
           </div>
@@ -165,5 +163,3 @@ function renderShoes(shoe) {
   `);
   $('#shoes').prepend(shoeHtml);
 }
-
-
