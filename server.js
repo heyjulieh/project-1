@@ -83,13 +83,6 @@ app.get('/api/brands', function(req,res) {
       res.json(allBrands);
     });
 });
-// get one book
-// app.get('/api/books/:id', function (req, res) {
-//   console.log('request url params:', req.params)
-//   db.Book.findOne({_id: req.params.id }, function(err, data) {
-//     res.json(data);
-//   });
-// });
 
 // show specific shoe
 app.get('/api/shoes/:shoeId', showSpecificShoe);
@@ -120,7 +113,9 @@ app.post('/api/source', createShoe);
   });
 }
 
+
 // delete shoe on source
+
 app.delete('/api/source/:shoeId', deleteShoe);
   function deleteShoe(req,res){
     db.Shoe.findOneAndRemove({ _id: req.params.shoeId}, function(err, foundShoe){
@@ -129,6 +124,7 @@ app.delete('/api/source/:shoeId', deleteShoe);
     console.log('shoe deleted!');
   });
   }
+
 
 // update a shoe on source
 app.put('/api/source/:shoeId', updateShoe);
@@ -152,3 +148,4 @@ app.put('/api/source/:shoeId', updateShoe);
   app.listen(process.env.PORT || 5000, function () {
     console.log('Listening at http://localhost:5000/');
   });
+  
