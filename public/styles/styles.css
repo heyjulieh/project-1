@@ -108,12 +108,12 @@ img {
 }
 
 .source {
-  background-color: lightgrey;
+  background-color: #F8F8F8;
 }
 
 .form-control {
   background-color: white;
-  color: darkgrey;
+  color: black;
   padding: 5px;
   font-size: 10px;
   width: 200px;

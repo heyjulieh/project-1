@@ -91,9 +91,9 @@ function renderShoes(shoe) {
               <div class="col s12 m6 l6">
                 <ul class="list-group">
                   <li class="list-group-item">
-                    <h5 class='inline-header'>Shoe Name:</h5>
-                    <span id="name" class="shoe-name">${shoe.name}</span>
-                  </li><br>
+                    <h3 class='inline-header'>
+                    <span id="name" class="shoe-name"><h3>${shoe.name}</h3></span></h3>
+                  </li><br><br><br>
                   <li class="list-group-item">
                     <h5 class='inline-header'>Brand Name:</h5>
                     <span id="brandName" class="shoe-brand">${shoe.brand}</span>

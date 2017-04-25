@@ -1,7 +1,8 @@
 # Project 1: SNEAKERHUB
 ## Description
 
-This project was created by Julie Huang & Kevin Tse, who are both students in General Assembly's Web Development Immersive Program. Both Julie and Kevin hold a great love for sneakers and felt that a web application that allowed sneaker lovers to come together to crowdsource/share their thoughts and resources on the hottest sneakers-- from the past and at present-- would be of great use personally and for friends looking to "cop the latest pair".
+
+This project was created by Julie Huang & Kevin Tse, who are both students in General Assembly's Web Development Immersive Program. Both Julie and Kevin hold a great love for sneakers and felt that a web application that allowed sneaker lovers to come together to crowdsource/share their thoughts and resources on the hottest sneakers-- from the past and at present-- and would be of great use personally, as well as for friends looking to "cop the latest pair".
 
 ## Front-End
 

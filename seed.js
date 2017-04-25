@@ -186,7 +186,7 @@ var brandList = [];
                 shoeList.push({
                               brand: 'Adidas',
                               name: 'Adidas NMD Pharrell HU Human Race Yellow',
-                              colorway: 'EQT Yellow/EQT Yellow/FTWR White',
+                              colorway: 'EQT Yellow/FTWR White',
                               price: '$240',
                               releaseDate: 'July 22, 2016',
                               type: ['Running', 'Fitness', 'Walking'],
